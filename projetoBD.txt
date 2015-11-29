@@ -1,0 +1,16 @@
+Implementar um sistema que controle dados do seu time favorito. O time pode ser de qualquer esporte: basquete, voleybol, futebol, handbol, etc. 
+O sistema deve ser implementado em linguagem de programação Java usando JDBC para conexão com o MySQL. O sistema deve ser capaz de:
+- Armazenar dados de vitória, derrota ou empate do time, guardando inclusive contra quem foi a partida e os pontos de cada equipe;
+- Armazenar dados sobre os jogadores do time: quais jogos participou, pontos que ele fez, faltas cometidas e sofridas, punições que recebeu (cartões, expulsões, etc);
+- Armazenar datas dos jogos;
+- Suportar que jogadores mudem de time;
+- Mostrar relatórios com dados importantes para os treinadores.
+
+Os relatórios do sistema devem ser projetados por você. Pense no que seria interessante para um técnico saber sobre jogos, times e jogadores.
+
+O sistema deverá ser entregue em um arquivo zip com apenas os códigos fonte em java e o script de criação das tabelas no MySQL. O sistema deverá ser apresentado em laboratório no dia 10/12/2015. 
+Juntamente com o sistema, deve-se gerar um documento com o Diagrama Relacional que descreve as tabelas do banco.
+O critério de avaliação é:
+- Usar corretamente conceitos fundamentas de projeto de banco de dados;
+- Prazo de entrega;
+- Qualidade e funcionalidades do sistema.
