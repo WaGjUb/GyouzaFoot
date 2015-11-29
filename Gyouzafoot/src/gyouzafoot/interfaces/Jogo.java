@@ -13,7 +13,14 @@ public interface Jogo {
     public int getPontuacaoTimeAdversario();
     public int getPontuacaoTime();
     public String getNomeAdversario();
-    
     public int getId();
+
+    
+    public int setPontuacaoTimeAdversario( int Pontos);
+    public int setPontuacaoTime( int Pontos );
+    public int setNomeAdversario( String Nome );
+    
+    //id é incrementado automaticamente no banco
+    //public int setId();
     
 }

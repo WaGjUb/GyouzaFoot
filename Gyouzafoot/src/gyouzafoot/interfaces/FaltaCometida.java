@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gyouzafoot.interfaces;
-
+import gyouzafoot.Objetos.Participacao;
 /**
  *
  * @author hydrocat
@@ -12,5 +12,9 @@ package gyouzafoot.interfaces;
 public interface FaltaCometida {
     public int getId();
     public int getIdParticipacao();
-
+    
+    //id é incrementado automaticamente no banco
+    //public int setId();
+    public int setParticipacao( Participacao p );
+    
 }

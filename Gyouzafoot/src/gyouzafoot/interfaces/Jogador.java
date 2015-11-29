@@ -11,7 +11,12 @@ package gyouzafoot.interfaces;
  */
 public interface Jogador {
     public String getNome();
-    public int getIdade();
-    
+    public int getIdade(); 
     public int getId();
+    
+    //id é incrementado automaticamente no banco
+    //public int setId();
+    public int setNome( String nome );
+    public int setIdade( int Idade ); 
+    
 }
