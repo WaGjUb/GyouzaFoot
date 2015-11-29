@@ -10,13 +10,13 @@ use gyouzafoot;
 create table jogadores(
        nome varchar(255),
        int idade,
-       int id,
+       int id not null auto_increment,
 
        primary key( id )
 );
 
 create table contrato(
-       id int,
+       id int not null auto_increment,
        id_jogador int,
        entrada date,
        saida date,
@@ -29,7 +29,7 @@ create table contrato(
 
 create table jogo(
 
-	id int,
+	id int not null auto_increment,
 	nome_adversario varchar(100),
 	PTgyouza int,
 	PTadversario int,
@@ -40,6 +40,7 @@ create table jogo(
 
 create table participacao(  
 
+	id int not null auto_increment,
 	id_jogador int,
 	id_jogo int,
 	gol_contra int,
@@ -52,7 +53,7 @@ create table participacao(
 
 create table suspensao(
 	
-	id int,
+	id int not null auto_increment,
 	id_jogador int,
 	id_jogo int,
 	qtde_jogos int,
@@ -64,7 +65,7 @@ create table suspensao(
 
 create table cartao_amarelo(
 	
-	id int,
+	id int not null auto_increment,
 	id_participacao,
 	
 	primary key ( id ),
@@ -73,7 +74,7 @@ create table cartao_amarelo(
 
 create table cartao_vermelho(
 
-	id int,
+	id int not null auto_increment,
 	id_participacao,
 	
 	primary key ( id ),
@@ -82,7 +83,7 @@ create table cartao_vermelho(
 
 create table faltas_cometidas(
 
-	id int,
+	id int not null auto_increment,
 	id_participacao,
 	gravidade int,
 	
@@ -92,7 +93,7 @@ create table faltas_cometidas(
 
 create table faltas_tomadas(
 	
-	id int,
+	id int not null auto_increment,
 	id_participacao,
 	gravidade int,
 	
