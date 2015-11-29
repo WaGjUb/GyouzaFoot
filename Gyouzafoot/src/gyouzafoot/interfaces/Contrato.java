@@ -19,14 +19,5 @@ public interface Contrato {
     public int getCamiseta();
     public String getPosicao();
 
-    public int getId();
-    /*Setters
-    Não são publicos porque os cadastros devem ser imutaveis para manter a coesão com o banco.
-    Então, cria-se um novo cadastro para cada atualização( se nescessária ) do jogador
-    */
-    public int setIdJogador();
-    public java.time.LocalDate setEntrada();
-    public java.time.LocalDate setSaida();
-    public int setCamiseta();
-    public String setPosicao();    
+    public int getId();   
 }
