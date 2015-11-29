@@ -11,14 +11,18 @@ import gyouzafoot.Objetos.Suspensao;
  *
  * @author hydrocat
  */
-public interface CartaoVermelho {
+public interface CartaoVermelho extends Cartao{
     
     //Getters
+    @Override
     public int getIdParticipacao();
     public int getIdSuspensao();
+
+    @Override
     public int getId();
     
     //Setters
+    @Override
     public int setParticipacao( Participacao p );
     public int setSuspensao( Suspensao s );
     //id é incrementado automaticamente no banco

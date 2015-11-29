@@ -10,13 +10,6 @@ import gyouzafoot.Objetos.Participacao;
  *
  * @author hydrocat
  */
-public interface CartaoAmarelo {
-    /*Getters*/
-    public int getIdParticipacao();
-    public int getId();
-    
-    /*Setters*/
-    public int setParticipacao( Participacao p );
-    //id é incrementado automaticamente no banco
-    //public int setId();
+public interface CartaoAmarelo extends Cartao{
+
 }
