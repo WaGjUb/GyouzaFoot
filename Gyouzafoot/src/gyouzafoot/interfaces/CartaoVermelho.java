@@ -9,9 +9,10 @@ package gyouzafoot.interfaces;
  *
  * @author hydrocat
  */
-public interface Jogador {
-    public String getNome();
-    public int getIdade();
+public interface CartaoVermelho {
+    public int getIdParticipacao();
+    public int getIdSuspensao();
     
     public int getId();
+    
 }
