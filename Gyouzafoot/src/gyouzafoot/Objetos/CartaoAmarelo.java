@@ -21,15 +21,10 @@ package gyouzafoot.Objetos;
  *
  * @author hydrocat
  */
-public class Jogador implements gyouzafoot.interfaces.Jogador{
+public class CartaoAmarelo implements gyouzafoot.interfaces.CartaoAmarelo{
 
     @Override
-    public String getNome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getIdade() {
+    public int getIdParticipacao() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,12 +34,7 @@ public class Jogador implements gyouzafoot.interfaces.Jogador{
     }
 
     @Override
-    public int setNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int setIdade(int Idade) {
+    public int setParticipacao(Participacao p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

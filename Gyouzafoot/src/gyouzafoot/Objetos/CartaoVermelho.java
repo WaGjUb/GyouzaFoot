@@ -21,25 +21,15 @@ package gyouzafoot.Objetos;
  *
  * @author hydrocat
  */
-public class Participacao implements gyouzafoot.interfaces.Particiapacao{
+public class CartaoVermelho implements gyouzafoot.interfaces.CartaoVermelho {
 
     @Override
-    public int getIdJogador() {
+    public int getIdParticipacao() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int getIdJogo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getQuantidadeGols() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getQuantidadeGolsContra() {
+    public int getIdSuspensao() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -49,22 +39,12 @@ public class Participacao implements gyouzafoot.interfaces.Particiapacao{
     }
 
     @Override
-    public int setJogador(Jogador j) {
+    public int setParticipacao(Participacao p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setJogo(Jogo j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int setQuantidadeGols(int gols) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int setQuantidadeGolsContra(int gols) {
+    public int setSuspensao(Suspensao s) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
