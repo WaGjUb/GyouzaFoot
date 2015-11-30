@@ -18,27 +18,13 @@
 package gyouzafoot.DAOs;
 
 import java.sql.*;
-import gyouzafoot.Objetos.Jogador;
+import gyouzafoot.Objetos.Suspensao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  *
- * @author WaGjUb
+ * @author wagjub
  */
-
-
-
-
-public class JogadorDAO {
-
-    Connection c;
-    Conexao helper;
-      
-    public JogadorDAO(CredenciaisConexao cc)
-    {
-        this.helper = new Conexao();
-        this.c = helper.getConnection(cc);
-    }
+public class SuspensaoDAO {
     
 }
