@@ -33,14 +33,14 @@ public class CartaoAmareloDAO{
     
     Connection c;
     
-    public CartaoAmareloDAO( CredenciaisConexcao cc )
+    public CartaoAmareloDAO( CredenciaisConexao cc )
     {
         this.c = new GeradorConexao().GeradorConexao(cc);
     }
     
     public boolean inserir( CartaoAmarelo c )
     {
-        String sql = "inser into cartao_amarelo (id_participacao) values (?)";
+        String sql = "insert into cartao_amarelo (id_participacao) values (?)";
         
         try {
             
