@@ -26,6 +26,21 @@ public class Cartao implements gyouzafoot.interfaces.Cartao{
     private int idParticipacao;
     private int id;
     
+    /**
+     *
+     * @return
+     */
+    public Cartao( int id, int idParticipacao )
+    {
+        this.id = id;
+        this.idParticipacao = idParticipacao;
+    }
+    
+    public Cartao( int idParticipacao )
+    {
+        this.idParticipacao = idParticipacao;
+    }
+    
     @Override
     public int getIdParticipacao() {
         return this.idParticipacao;
@@ -34,16 +49,5 @@ public class Cartao implements gyouzafoot.interfaces.Cartao{
     @Override
     public int getId() {
         return this.id;
-    }
-    
-    @Override
-    public void setId( int id ) {
-        this.id = id;
-    }
-
-    @Override
-    public void setIdParticipacao(int Participacao) {
-        this.idParticipacao = Participacao;
-    }
-    
+    }    
 }

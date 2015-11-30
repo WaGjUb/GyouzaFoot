@@ -25,8 +25,5 @@ public interface Cartao {
     /*Getters*/
     public int getIdParticipacao();
     public int getId();
-    
-    /*Setters*/
-    public void setIdParticipacao( int Participacao );
-    public void setId( int id );
+    //public void setId( int id );
 }

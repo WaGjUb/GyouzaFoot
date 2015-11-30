@@ -15,10 +15,10 @@ public interface Jogo {
     public String getNomeAdversario();
     public int getId();
 
-    
-    public void setPontuacaoTimeAdversario( int Pontos);
-    public void setPontuacaoTime( int Pontos );
-    public void setNomeAdversario( String Nome );
-    public void setId( int id );
+    //Estes objetos não sao mutaveis.
+    //public void setPontuacaoTimeAdversario( int Pontos);
+    //public void setPontuacaoTime( int Pontos );
+    //public void setNomeAdversario( String Nome );
+    //public void setId( int id );
     
 }

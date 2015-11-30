@@ -24,9 +24,9 @@ import java.sql.*;
  *
  * @author hydrocat
  */
-public class GeradorConexao {
+public class Conexao {
     
-    public Connection GeradorConexao( CredenciaisConexao c )
+    public Connection getConnection( CredenciaisConexao c )
     {
         try 
         {
@@ -41,10 +41,40 @@ public class GeradorConexao {
         //se falhar..
         return null;
     }
+    
+    public void closeConnection( ResultSet rs ) throws SQLException
+    {
+        rs.close();
+    }
+    
+    public void closeConnection( Connection c ) throws SQLException
+    {
+        c.close();
+    }
+            
+    public void closeConnection( PreparedStatement p ) throws SQLException
+    {
+        p.close();
+    }
+    
+    public void closeAllConnections( ResultSet rs, Connection c, PreparedStatement p )throws SQLException
+    {
+        closeConnection(c);
+        closeConnection(rs);
+        closeConnection(p);
+    }
+            
+    public void closeAllConnections( Connection c, PreparedStatement p )throws SQLException
+    {
+        closeConnection(c);
+        closeConnection(p);
+    }
         
+    
+    
     public static void main(String[] args) {
                 CredenciaisConexao cc = new CredenciaisConexao("localhost","gyouzafoot", "Usuario", "senha");
-        Connection c = new GeradorConexao().GeradorConexao(cc);
+        Connection c = new Conexao().getConnection(cc);
         System.out.println(c.toString());
         try {
             ResultSet r = c.prepareStatement("show tables;").executeQuery();

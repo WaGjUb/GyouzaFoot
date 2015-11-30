@@ -14,8 +14,9 @@ public interface Jogador {
     public int getIdade(); 
     public int getId();
     
-    public void setId( int id );
-    public void setNome( String nome );
-    public void setIdade( int Idade ); 
+    //Estes objetos não sao mutaveis.
+    //public void setId( int id );
+    //public void setNome( String nome );
+    //public void setIdade( int Idade ); 
     
 }

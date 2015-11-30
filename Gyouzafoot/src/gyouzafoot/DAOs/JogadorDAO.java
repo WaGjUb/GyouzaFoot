@@ -30,10 +30,12 @@ import java.util.logging.Logger;
 public class JogadorDAO {
 
     Connection c;
+    Conexao helper;
       
     public JogadorDAO(CredenciaisConexao cc)
     {
-        this.c = new GeradorConexao().GeradorConexao(cc);
+        this.helper = new Conexao();
+        this.c = helper.getConnection(cc);
     }
     
 }

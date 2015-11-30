@@ -25,7 +25,8 @@ public interface Falta {
     public int getIdParticipacao();
     public int getId();
     
-    public void setIdParticipacao( int p );
-    public void setId( int id );
+    //Estes objetos não sao mutaveis.
+    //public void setIdParticipacao( int p );
+    //public void setId( int id );
     
 }

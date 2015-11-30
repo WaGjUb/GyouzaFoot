@@ -22,10 +22,11 @@ public interface Contrato {
     public int getId(); 
 
     /*Setters*/
-    public void setEntrada( LocalDate data );
-    public void setSaida( LocalDate data );
-    public void setCamiseta( int numero );
-    public void setPosicao( String Posicao ); 
-    public void setIdJogador( int jogador );
-    public void setId( int id );
+    //Estes objetos não sao mutaveis.
+    //public void setEntrada( LocalDate data );
+    //public void setSaida( LocalDate data );
+    //public void setCamiseta( int numero );
+    //public void setPosicao( String Posicao ); 
+    //public void setIdJogador( int jogador );
+    //public void setId( int id );
 }

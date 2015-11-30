@@ -19,120 +19,103 @@ package gyouzafoot.DAOs;
 
 //import com.mysql.jdbc.PreparedStatement;
 //import com.mysql.jdbc.Connection;
-
 import java.sql.*;
 import gyouzafoot.Objetos.Cartao;
+import java.util.ArrayList;
 
 /**
  *
  * @author hydrocat
  */
-public class CartaoDAO{
-    
+public class CartaoDAO {
+
     Connection c;
-    
-    public CartaoDAO( CredenciaisConexao cc )
-    {
-        this.c = new GeradorConexao().GeradorConexao(cc);
+    Conexao helper;
+
+    public CartaoDAO(CredenciaisConexao cc) throws SQLException {
+        this.helper = new Conexao();
+        this.c = helper.getConnection(cc);
     }
-    
-    public boolean inserir( Cartao cartao )
-    {
+
+    public boolean inserir(Cartao cartao) throws SQLException {
         String sql = "insert into cartao_amarelo (id_participacao) values (?)";
-        
-        try {
-            
-            PreparedStatement s = this.c.prepareStatement(sql);
-            s.setInt( 1, cartao.getIdParticipacao() );
-            s.executeUpdate();
-            
-            s.close();
-            this.c.close();
-            
-            return true;
-            
-        } catch (SQLException ex) {
-            System.out.println("Erro - Inserir - CartaoDAO - \n"+ex.getMessage());
-            
-            return false;
-        }
-        
+
+        PreparedStatement s = this.c.prepareStatement(sql);
+        s.setInt(1, cartao.getIdParticipacao());
+        s.executeUpdate();
+
+        helper.closeAllConnections(c, s);
+        return true;
+
     }
-    
-    public boolean remover( Cartao cartao )
-    {
+
+    public boolean remover(Cartao cartao) throws SQLException {
         String sql = "delete from cartao_amarelo where id = ?";
-        
-        try {
-            
-            PreparedStatement s = this.c.prepareStatement(sql);
-            s.setInt( 1, cartao.getId() );
-            s.executeQuery();
-            
-            s.close();
-            this.c.close();
-            
-            return true;
-            
-        } catch (SQLException ex) {
-            System.out.println("Erro - Remover - CartaoDAO - \n"+ex.getMessage());
-            return false;
-        }
+
+        PreparedStatement s = this.c.prepareStatement(sql);
+        s.setInt(1, cartao.getId());
+        s.executeQuery();
+
+        helper.closeAllConnections(c, s);
+        return true;
+
     }
-        
-    public boolean alterar( Cartao cartao )
-    {
+
+    public boolean alterar(Cartao cartao) throws SQLException {
         String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
+
+        PreparedStatement s = this.c.prepareStatement(sql);
+        s.setInt(1, cartao.getIdParticipacao());
+        s.setInt(2, cartao.getId());
+        s.executeQuery();
         
-        try {
-            
-            PreparedStatement s = this.c.prepareStatement(sql);
-            s.setInt( 1, cartao.getIdParticipacao() );
-            s.setInt(2, cartao.getId() );
-            s.executeQuery();
-            return true;
-            
-        } catch (SQLException ex) {
-            System.out.println("Erro - Alterar - CartaoDAO - \n"+ex.getMessage());
-            return false;
-        }
+        helper.closeAllConnections(c, s);
+        return true;
+
     }
-    
-    public Cartao buscar( int id )
-    {
+
+    public Cartao buscar(int id) throws SQLException {
         String sql = "select * from cartao_amarelo where id = ?";
-        Cartao cartao = new Cartao();
         
-        try {
-            
-            PreparedStatement s = this.c.prepareStatement(sql);
-            s.setInt( 1, id );
-            ResultSet rs = s.executeQuery();
-            
-            while( rs.next() )
-            {
-                cartao.setIdParticipacao( rs.getInt("id_participacao") );
-                cartao.setId( rs.getInt( "id" ) );
-            }
-            
-            s.close();
-            this.c.close();
-            
-            return cartao;
-            
-        } catch (SQLException ex) {
-            System.out.println("Erro - buscar - CartaoDAO - \n"+ex.getMessage());
-            return null;
-        }    
+        Cartao cartao = null;
+        PreparedStatement s = this.c.prepareStatement(sql);
+        s.setInt(1, id);
+        ResultSet rs = s.executeQuery();
+
+        while (rs.next()) {
+            cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
+        }
+
+        helper.closeAllConnections(rs, c, s);
+        return cartao;
     }
     
+    public ArrayList<Cartao> getList() throws SQLException
+    {
+        Cartao cartao = null;
+        ArrayList<Cartao> cartoes = new ArrayList<Cartao>();
+        String sql = "select * from cartao_amarelo";
+        
+        PreparedStatement ps = this.c.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
+            cartoes.add(cartao);
+        }
+        
+        helper.closeAllConnections(rs, c, ps);
+        return cartoes;
+    }
+
     public static void main(String[] args) {
         CredenciaisConexao cc = new CredenciaisConexao("localhost", "gyouzafoot", "usuario", "senha");
-        //Connection c = new GeradorConexao().GeradorConexao(cc);
-        Cartao c = new Cartao();
-        c.setIdParticipacao( 3 );
-        new CartaoDAO(cc).inserir( c );
-        Cartao cartao = new CartaoDAO(cc).buscar( 0 );
-        System.out.println(cartao.getId() +" "+ cartao.getIdParticipacao());
+        //Connection c = new Conexao().Conexao(cc);
+        //Cartao c = new Cartao();
+        //c.setIdParticipacao( 3 );
+        //new CartaoDAO(cc).inserir( c );
+        //Cartao cartao = new CartaoDAO(cc).buscar( 0 );
+        //System.out.println(cartao.getId() +" "+ cartao.getIdParticipacao());
     }
 }

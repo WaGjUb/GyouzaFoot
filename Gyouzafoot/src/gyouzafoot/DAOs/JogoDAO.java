@@ -33,7 +33,7 @@ public class JogoDAO {
       
     public JogoDAO(CredenciaisConexao cc)
     {
-        this.c = new GeradorConexao().GeradorConexao(cc);
+        this.c = new Conexao().GeradorConexao(cc);
     }
     
 }

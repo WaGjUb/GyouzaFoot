@@ -27,7 +27,8 @@ public interface Suspensao {
     public int getIdParticipacao();
     public int getQuantidadeJogos();
     
-    public void setParticipacao( Participacao p );
-    public void setQuantidadeJogos( int jogos );
-    public void setId( int id );
+    //Estes objetos não sao mutaveis.
+    //public void setParticipacao( Participacao p );
+    //public void setQuantidadeJogos( int jogos );
+    //public void setId( int id );
 }

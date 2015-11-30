@@ -17,9 +17,10 @@ public interface Particiapacao {
     public int getQuantidadeGolsContra();    
     public int getId();
     
-    public void setJogador( Jogador j );
-    public void setJogo( Jogo j );
-    public void setQuantidadeGols( int gols);
-    public void setQuantidadeGolsContra( int gols );
-    public void setId( int id );
+    //Estes objetos não sao mutaveis.
+    //public void setJogador( Jogador j );
+    //public void setJogo( Jogo j );
+    //public void setQuantidadeGols( int gols);
+    //public void setQuantidadeGolsContra( int gols );
+    //public void setId( int id );
 }
