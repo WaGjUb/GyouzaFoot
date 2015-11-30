@@ -39,13 +39,19 @@ public class Suspensao  implements gyouzafoot.interfaces.Suspensao{
     }
 
     @Override
-    public int setParticipacao(Participacao p) {
+    public void setParticipacao(Participacao p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setQuantidadeJogos(int jogos) {
+    public void setQuantidadeJogos(int jogos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void setId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }
