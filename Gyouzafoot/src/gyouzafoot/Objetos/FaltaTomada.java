@@ -34,8 +34,12 @@ public class FaltaTomada implements gyouzafoot.interfaces.Falta{
     }
 
     @Override
-    public int setParticipacao(Participacao p) {
+    public void setIdParticipacao(int p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void setId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

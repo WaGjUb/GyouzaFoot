@@ -5,7 +5,6 @@
  */
 package gyouzafoot.interfaces;
 import java.time.LocalDate;
-import gyouzafoot.Objetos.Jogador;
 
 /**
  *
@@ -22,16 +21,11 @@ public interface Contrato {
     public String getPosicao();
     public int getId(); 
 
-    /*Setters
-    Não são publicos porque os cadastros devem ser imutaveis para manter a coesão com o banco.
-    Então, cria-se um novo cadastro para cada atualização( se nescessária ) do jogador
-    */
-    public int setEntrada( LocalDate data );
-    public int setSaida( LocalDate data );
-    public int setCamiseta( int numero );
-    public int setPosicao( String Posicao ); 
-    public int setJogador( Jogador j );
-    
-    //id é incrementado automaticamente no banco
-    //public int setId();
+    /*Setters*/
+    public void setEntrada( LocalDate data );
+    public void setSaida( LocalDate data );
+    public void setCamiseta( int numero );
+    public void setPosicao( String Posicao ); 
+    public void setIdJogador( int jogador );
+    public void setId( int id );
 }

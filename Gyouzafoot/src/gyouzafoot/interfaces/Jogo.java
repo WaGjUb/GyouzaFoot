@@ -16,11 +16,9 @@ public interface Jogo {
     public int getId();
 
     
-    public int setPontuacaoTimeAdversario( int Pontos);
-    public int setPontuacaoTime( int Pontos );
-    public int setNomeAdversario( String Nome );
-    
-    //id é incrementado automaticamente no banco
-    //public int setId();
+    public void setPontuacaoTimeAdversario( int Pontos);
+    public void setPontuacaoTime( int Pontos );
+    public void setNomeAdversario( String Nome );
+    public void setId( int id );
     
 }

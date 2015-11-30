@@ -19,6 +19,7 @@ package gyouzafoot.Objetos;
 
 /**
  *
+ * 
  * @author hydrocat
  */
 public class Jogador implements gyouzafoot.interfaces.Jogador{
@@ -39,13 +40,20 @@ public class Jogador implements gyouzafoot.interfaces.Jogador{
     }
 
     @Override
-    public int setNome(String nome) {
+    public void setId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setIdade(int Idade) {
+    public void setNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setIdade(int Idade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     
 }

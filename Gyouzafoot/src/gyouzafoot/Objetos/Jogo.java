@@ -44,18 +44,24 @@ public class Jogo implements gyouzafoot.interfaces.Jogo{
     }
 
     @Override
-    public int setPontuacaoTimeAdversario(int Pontos) {
+    public void setPontuacaoTimeAdversario(int Pontos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setPontuacaoTime(int Pontos) {
+    public void setPontuacaoTime(int Pontos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setNomeAdversario(String Nome) {
+    public void setNomeAdversario(String Nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
