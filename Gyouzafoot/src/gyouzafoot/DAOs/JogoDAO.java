@@ -27,6 +27,13 @@ import gyouzafoot.Objetos.Jogador;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Jogo {
+public class JogoDAO {
+    
+    Connection c;
+      
+    public JogoDAO(CredenciaisConexao cc)
+    {
+        this.c = new GeradorConexao().GeradorConexao(cc);
+    }
     
 }

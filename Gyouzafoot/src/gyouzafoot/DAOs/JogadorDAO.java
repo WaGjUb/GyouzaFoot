@@ -26,6 +26,14 @@ import java.sql.*;
 import gyouzafoot.Objetos.Jogador;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 public class JogadorDAO {
+
+    Connection c;
+      
+    public JogadorDAO(CredenciaisConexao cc)
+    {
+        this.c = new GeradorConexao().GeradorConexao(cc);
+    }
     
 }
