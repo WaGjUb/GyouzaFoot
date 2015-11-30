@@ -55,28 +55,35 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     }
 
     @Override
-    public int setEntrada(LocalDate data) {
+    public void setEntrada(LocalDate data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setSaida(LocalDate data) {
+    public void setSaida(LocalDate data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setCamiseta(int numero) {
+    public void setCamiseta(int numero) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setPosicao(String Posicao) {
+    public void setPosicao(String Posicao) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setJogador(Jogador j) {
+    public void setIdJogador(int jogador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     
 }

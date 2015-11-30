@@ -17,11 +17,9 @@ public interface Particiapacao {
     public int getQuantidadeGolsContra();    
     public int getId();
     
-    public int setJogador( Jogador j );
-    public int setJogo( Jogo j );
-    public int setQuantidadeGols( int gols);
-    public int setQuantidadeGolsContra( int gols );
-    
-    //id é incrementado automaticamente no banco
-    //public int setId();
+    public void setJogador( Jogador j );
+    public void setJogo( Jogo j );
+    public void setQuantidadeGols( int gols);
+    public void setQuantidadeGolsContra( int gols );
+    public void setId( int id );
 }

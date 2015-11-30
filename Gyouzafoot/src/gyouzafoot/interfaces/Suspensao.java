@@ -27,8 +27,7 @@ public interface Suspensao {
     public int getIdParticipacao();
     public int getQuantidadeJogos();
     
-    public int setParticipacao( Participacao p );
-    public int setQuantidadeJogos( int jogos );
-    //id é incrementado automaticamente no banco
-    //public int setId();
+    public void setParticipacao( Participacao p );
+    public void setQuantidadeJogos( int jogos );
+    public void setId( int id );
 }

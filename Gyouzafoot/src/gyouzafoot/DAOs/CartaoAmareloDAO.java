@@ -81,14 +81,15 @@ public class CartaoAmareloDAO{
         }
     }
         
-    public boolean alterar( CartaoAmarelo antigo, CartaoAmarelo novo )
+    public boolean alterar( CartaoAmarelo cartao )
     {
         String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
         
         try {
             
             PreparedStatement s = this.c.prepareStatement(sql);
-            s.setInt( 1, c.ge );
+            s.setInt( 1, cartao.getIdParticipacao() );
+            s.setInt(2, cartao.getId() );
             s.executeQuery();
             return true;
             
@@ -97,5 +98,41 @@ public class CartaoAmareloDAO{
             return false;
         }
     }
-  
+    
+    public CartaoAmarelo buscar( int id )
+    {
+        String sql = "select * from cartao_amarelo where id = ?";
+        CartaoAmarelo cartao = new CartaoAmarelo();
+        
+        try {
+            
+            PreparedStatement s = this.c.prepareStatement(sql);
+            s.setInt( 1, id );
+            ResultSet rs = s.executeQuery();
+            
+            while( rs.next() )
+            {
+                cartao.setIdParticipacao( rs.getInt("id_participacao") );
+                cartao.setId( rs.getInt( "id" ) );
+            }
+            
+            s.close();
+            this.c.close();
+            
+            return cartao;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }    
+    }
+    
+    public static void main(String[] args) {
+        CredenciaisConexcao cc = new CredenciaisConexcao("localhost", "gyouzafoot", "hydrocat", "M!34332675");
+        //Connection c = new GeradorConexao().GeradorConexao(cc);
+        
+        CartaoAmareloDAO cd = new CartaoAmareloDAO( cc );
+        CartaoAmarelo cartao = new CartaoAmarelo();
+        cartao.
+    }
 }

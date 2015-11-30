@@ -14,9 +14,8 @@ public interface Jogador {
     public int getIdade(); 
     public int getId();
     
-    //id é incrementado automaticamente no banco
-    //public int setId();
-    public int setNome( String nome );
-    public int setIdade( int Idade ); 
+    public void setId( int id );
+    public void setNome( String nome );
+    public void setIdade( int Idade ); 
     
 }

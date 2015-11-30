@@ -17,8 +17,6 @@
  */
 package gyouzafoot.interfaces;
 
-import gyouzafoot.Objetos.Participacao;
-
 /**
  *
  * @author hydrocat
@@ -27,6 +25,7 @@ public interface Falta {
     public int getIdParticipacao();
     public int getId();
     
-    public int setParticipacao( Participacao p );
+    public void setIdParticipacao( int p );
+    public void setId( int id );
     
 }

@@ -49,23 +49,30 @@ public class Participacao implements gyouzafoot.interfaces.Particiapacao{
     }
 
     @Override
-    public int setJogador(Jogador j) {
+    public void setJogador(Jogador j) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setJogo(Jogo j) {
+    public void setJogo(Jogo j) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setQuantidadeGols(int gols) {
+    public void setQuantidadeGols(int gols) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int setQuantidadeGolsContra(int gols) {
+    public void setQuantidadeGolsContra(int gols) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
 }
