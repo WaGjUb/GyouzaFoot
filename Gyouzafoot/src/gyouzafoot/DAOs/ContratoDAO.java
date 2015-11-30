@@ -1,3 +1,10 @@
+package gyouzafoot.DAOs;
+
+import java.sql.*;
+import gyouzafoot.Objetos.Contrato;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Copyright (C) 2015 wagjub
  *
@@ -15,26 +22,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package gyouzafoot.DAOs;
-
-import java.sql.*;
-import gyouzafoot.Objetos.Jogador;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author WaGjUb
+ * @author wagjub
  */
-
-
-
-
-public class JogadorDAO {
-
+public class ContratoDAO {
+    
     Connection c;
       
-    public JogadorDAO(CredenciaisConexao cc)
+    public ContratoDAO(CredenciaisConexao cc)
     {
         this.c = new GeradorConexao().GeradorConexao(cc);
     }

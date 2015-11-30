@@ -17,15 +17,16 @@
  */
 package gyouzafoot.DAOs;
 
+import java.sql.*;
+import gyouzafoot.Objetos.Jogo;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author wagjub
  */
 
-import java.sql.*;
-import gyouzafoot.Objetos.Jogador;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class JogoDAO {
     
