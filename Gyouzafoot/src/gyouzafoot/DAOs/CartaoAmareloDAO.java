@@ -33,7 +33,7 @@ public class CartaoAmareloDAO{
     
     Connection c;
     
-    public CartaoAmareloDAO( CredenciaisConexcao cc )
+    public CartaoAmareloDAO( CredenciaisConexao cc )
     {
         this.c = new GeradorConexao().GeradorConexao(cc);
     }

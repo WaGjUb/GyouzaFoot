@@ -21,13 +21,13 @@ package gyouzafoot.DAOs;
  *
  * @author hydrocat
  */
-public class CredenciaisConexcao {
+public class CredenciaisConexao {
     private String ip;
     private String nomeBanco;
     private String usuario;
     private String senha;
  
-    public CredenciaisConexcao(String ip, String nomeBanco,
+    public CredenciaisConexao(String ip, String nomeBanco,
                                 String usuario, String senha)
     {
         this.ip = ip;
@@ -36,7 +36,7 @@ public class CredenciaisConexcao {
         this.senha = senha;
     }
     
-    public CredenciaisConexcao(){}
+    public CredenciaisConexao(){}
     
     public String getIp() {
         return ip;

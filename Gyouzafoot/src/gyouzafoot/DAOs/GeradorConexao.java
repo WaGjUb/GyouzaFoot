@@ -26,7 +26,7 @@ import java.sql.*;
  */
 public class GeradorConexao {
     
-    public Connection GeradorConexao( CredenciaisConexcao c )
+    public Connection GeradorConexao( CredenciaisConexao c )
     {
         try 
         {
@@ -43,7 +43,7 @@ public class GeradorConexao {
     }
         
     public static void main(String[] args) {
-                CredenciaisConexcao cc = new CredenciaisConexcao("localhost","gyouzafoot", "Usuario", "senha");
+                CredenciaisConexao cc = new CredenciaisConexao("localhost","gyouzafoot", "Usuario", "senha");
         Connection c = new GeradorConexao().GeradorConexao(cc);
         System.out.println(c.toString());
         try {
