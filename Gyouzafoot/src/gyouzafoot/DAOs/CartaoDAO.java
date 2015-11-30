@@ -21,24 +21,22 @@ package gyouzafoot.DAOs;
 //import com.mysql.jdbc.Connection;
 
 import java.sql.*;
-import gyouzafoot.Objetos.CartaoAmarelo;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import gyouzafoot.Objetos.Cartao;
 
 /**
  *
  * @author hydrocat
  */
-public class CartaoAmareloDAO{
+public class CartaoDAO{
     
     Connection c;
     
-    public CartaoAmareloDAO( CredenciaisConexao cc )
+    public CartaoDAO( CredenciaisConexao cc )
     {
         this.c = new GeradorConexao().GeradorConexao(cc);
     }
     
-    public boolean inserir( CartaoAmarelo cartao )
+    public boolean inserir( Cartao cartao )
     {
         String sql = "insert into cartao_amarelo (id_participacao) values (?)";
         
@@ -46,7 +44,7 @@ public class CartaoAmareloDAO{
             
             PreparedStatement s = this.c.prepareStatement(sql);
             s.setInt( 1, cartao.getIdParticipacao() );
-            s.executeQuery();
+            s.executeUpdate();
             
             s.close();
             this.c.close();
@@ -54,13 +52,14 @@ public class CartaoAmareloDAO{
             return true;
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Erro - Inserir - CartaoDAO - \n"+ex.getMessage());
+            
             return false;
         }
         
     }
     
-    public boolean remover( CartaoAmarelo cartao )
+    public boolean remover( Cartao cartao )
     {
         String sql = "delete from cartao_amarelo where id = ?";
         
@@ -76,12 +75,12 @@ public class CartaoAmareloDAO{
             return true;
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Erro - Remover - CartaoDAO - \n"+ex.getMessage());
             return false;
         }
     }
         
-    public boolean alterar( CartaoAmarelo cartao )
+    public boolean alterar( Cartao cartao )
     {
         String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
         
@@ -94,15 +93,15 @@ public class CartaoAmareloDAO{
             return true;
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Erro - Alterar - CartaoDAO - \n"+ex.getMessage());
             return false;
         }
     }
     
-    public CartaoAmarelo buscar( int id )
+    public Cartao buscar( int id )
     {
         String sql = "select * from cartao_amarelo where id = ?";
-        CartaoAmarelo cartao = new CartaoAmarelo();
+        Cartao cartao = new Cartao();
         
         try {
             
@@ -122,17 +121,18 @@ public class CartaoAmareloDAO{
             return cartao;
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Erro - buscar - CartaoDAO - \n"+ex.getMessage());
             return null;
         }    
     }
     
     public static void main(String[] args) {
-        CredenciaisConexcao cc = new CredenciaisConexcao("localhost", "gyouzafoot", "hydrocat", "M!34332675");
+        CredenciaisConexao cc = new CredenciaisConexao("localhost", "gyouzafoot", "usuario", "senha");
         //Connection c = new GeradorConexao().GeradorConexao(cc);
-        
-        CartaoAmareloDAO cd = new CartaoAmareloDAO( cc );
-        CartaoAmarelo cartao = new CartaoAmarelo();
-        cartao.
+        Cartao c = new Cartao();
+        c.setIdParticipacao( 3 );
+        new CartaoDAO(cc).inserir( c );
+        Cartao cartao = new CartaoDAO(cc).buscar( 0 );
+        System.out.println(cartao.getId() +" "+ cartao.getIdParticipacao());
     }
 }
