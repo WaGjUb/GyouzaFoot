@@ -21,26 +21,29 @@ package gyouzafoot.Objetos;
  *
  * @author hydrocat
  */
-public class CartaoAmarelo implements gyouzafoot.interfaces.Cartao{
+public class Cartao implements gyouzafoot.interfaces.Cartao{
 
+    private int idParticipacao;
+    private int id;
+    
     @Override
     public int getIdParticipacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idParticipacao;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }
     
     @Override
     public void setId( int id ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.id = id;
     }
 
     @Override
     public void setIdParticipacao(int Participacao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.idParticipacao = Participacao;
     }
     
 }
