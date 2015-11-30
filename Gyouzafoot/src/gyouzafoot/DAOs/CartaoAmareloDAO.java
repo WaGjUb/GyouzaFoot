@@ -38,15 +38,19 @@ public class CartaoAmareloDAO{
         this.c = new GeradorConexao().GeradorConexao(cc);
     }
     
-    public boolean inserir( CartaoAmarelo c )
+    public boolean inserir( CartaoAmarelo cartao )
     {
         String sql = "insert into cartao_amarelo (id_participacao) values (?)";
         
         try {
             
             PreparedStatement s = this.c.prepareStatement(sql);
-            s.setInt( 1, c.getIdParticipacao() );
+            s.setInt( 1, cartao.getIdParticipacao() );
             s.executeQuery();
+            
+            s.close();
+            this.c.close();
+            
             return true;
             
         } catch (SQLException ex) {
@@ -56,4 +60,42 @@ public class CartaoAmareloDAO{
         
     }
     
+    public boolean remover( CartaoAmarelo cartao )
+    {
+        String sql = "delete from cartao_amarelo where id = ?";
+        
+        try {
+            
+            PreparedStatement s = this.c.prepareStatement(sql);
+            s.setInt( 1, cartao.getId() );
+            s.executeQuery();
+            
+            s.close();
+            this.c.close();
+            
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+        
+    public boolean alterar( CartaoAmarelo antigo, CartaoAmarelo novo )
+    {
+        String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
+        
+        try {
+            
+            PreparedStatement s = this.c.prepareStatement(sql);
+            s.setInt( 1, c.ge );
+            s.executeQuery();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+  
 }

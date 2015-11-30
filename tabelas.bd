@@ -4,6 +4,7 @@
 #como colocar os dados na tabela
 #mysql --local <nome do banco> <arquivo com o mesmo nome da tabela> 
 
+use gyouzafoot;
 
 create table jogadores(
        nome varchar(255),
@@ -44,12 +45,10 @@ create table participacao(
 
 create table suspensao(
 	id int not null auto_increment,
-	id_jogador int,
-	id_jogo int,
+	id_participacao int,
 	qtde_jogos int,
 	primary key ( id ),
-	foreign key ( id_jogador ) references jogadores( id ),
-	foreign key ( id_jogo ) references jogo( id )
+	foreign key ( id_participacao ) references participacao( id )
 );
 
 create table cartao_amarelo(
