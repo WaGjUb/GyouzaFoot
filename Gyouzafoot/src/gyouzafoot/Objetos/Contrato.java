@@ -23,34 +23,59 @@ import java.time.LocalDate;
  * @author hydrocat
  */
 public class Contrato implements gyouzafoot.interfaces.Contrato {
-
+    
+    private int id;
+    private int idJogador;
+    private LocalDate entrada;
+    private LocalDate saida;
+    private int camisa;
+    private String posicao;
+    
+    Contrato (int id, int idJogador, LocalDate entrada, LocalDate saida, int camisa, String posicao) {    
+        this.id = id;
+        this.idJogador = idJogador;
+        this.entrada = entrada;
+        this.saida = saida;
+        this.camisa = camisa;
+        this.posicao = posicao;
+    }
+    
+       Contrato (int idJogador, LocalDate entrada, LocalDate saida, int camisa, String posicao) {    
+        this.idJogador = idJogador;
+        this.entrada = entrada;
+        this.saida = saida;
+        this.camisa = camisa;
+        this.posicao = posicao;
+    }
+    
     @Override
     public int getIdJogador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idJogador;
     }
 
     @Override
     public LocalDate getEntrada() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.entrada;
     }
 
     @Override
     public LocalDate getSaida() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.saida;
     }
 
     @Override
     public int getCamiseta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.camisa;
     }
 
     @Override
     public String getPosicao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.posicao;
+        
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }    
 }

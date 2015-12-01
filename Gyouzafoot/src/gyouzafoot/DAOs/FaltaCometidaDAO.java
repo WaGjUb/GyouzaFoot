@@ -17,10 +17,21 @@
  */
 package gyouzafoot.DAOs;
 
+import java.sql.*;
+import gyouzafoot.Objetos.FaltaCometida;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author wagjub
  */
 public class FaltaCometidaDAO {
-    
+        
+    Connection c;
+      
+    public FaltaCometidaDAO(CredenciaisConexao cc)
+    {
+        this.c = new GeradorConexao().GeradorConexao(cc);
+    }
 }

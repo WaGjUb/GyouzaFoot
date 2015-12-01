@@ -24,6 +24,7 @@ package gyouzafoot.interfaces;
 public interface Falta {
     public int getIdParticipacao();
     public int getId();
+    public int getGravidade();
     
     //Estes objetos não sao mutaveis.
     //public void setIdParticipacao( int p );

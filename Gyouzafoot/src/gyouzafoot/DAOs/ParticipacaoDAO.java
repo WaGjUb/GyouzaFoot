@@ -17,7 +17,10 @@
  */
 package gyouzafoot.DAOs;
 
-import java.sql.Connection;
+import java.sql.*;
+import gyouzafoot.Objetos.Participacao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *

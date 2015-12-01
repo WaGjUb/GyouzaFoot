@@ -35,7 +35,7 @@ public class Conexao {
             
         }catch( SQLException e )
         {
-            System.out.println("Erro na conecção, "+ e.getMessage() );
+            System.out.println("Erro na conexão, "+ e.getMessage() );
         }
         
         //se falhar..

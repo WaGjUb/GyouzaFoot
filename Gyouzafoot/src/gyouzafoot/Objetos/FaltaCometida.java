@@ -23,13 +23,29 @@ package gyouzafoot.Objetos;
  */
 public class FaltaCometida implements gyouzafoot.interfaces.Falta{
 
+    private int id;
+    private int idParticipacao;
+    private int gravidade;
+    
+    FaltaCometida(int id, int idParticipacao, int gravidade)
+    {
+        this.id = id;
+        this.idParticipacao = idParticipacao;
+        this.gravidade = gravidade;
+    }
+    
     @Override
     public int getIdParticipacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idParticipacao;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }    
+
+    @Override
+    public int getGravidade() {
+        return this.gravidade;
+    }
 }

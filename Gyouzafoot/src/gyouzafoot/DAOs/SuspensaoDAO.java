@@ -26,5 +26,11 @@ import java.util.logging.Logger;
  * @author wagjub
  */
 public class SuspensaoDAO {
-    
+        
+    Connection c;
+      
+    public SuspensaoDAO(CredenciaisConexao cc)
+    {
+        this.c = new GeradorConexao().GeradorConexao(cc);
+    }
 }

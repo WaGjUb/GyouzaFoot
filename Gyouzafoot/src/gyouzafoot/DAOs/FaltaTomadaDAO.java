@@ -18,7 +18,7 @@
 package gyouzafoot.DAOs;
 
 import java.sql.*;
-import gyouzafoot.Objetos.Jogo;
+import gyouzafoot.Objetos.FaltaTomada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +27,13 @@ import java.util.logging.Logger;
  * @author wagjub
  */
 public class FaltaTomadaDAO {
-    
+        
+    Connection c;
+      
+    public FaltaTomadaDAO(CredenciaisConexao cc)
+    {
+        this.c = new GeradorConexao().GeradorConexao(cc);
+    }
     
     
 }
