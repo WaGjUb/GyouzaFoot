@@ -19,22 +19,39 @@ package gyouzafoot.Objetos;
 
 /**
  *
- * @author hydrocat
+ * @author wagjub
  */
 public class Suspensao  implements gyouzafoot.interfaces.Suspensao{
 
+    private int id;
+    private int idParticipacao;
+    private int quantidadeJogos;
+    
+    Suspensao(int id, int idParticipacao, int quantidadeJogos)
+    {
+        this.id = id;
+        this.idParticipacao = idParticipacao;
+        this.quantidadeJogos = quantidadeJogos;
+    }
+   
+    Suspensao(int idParticipacao, int quantidadeJogos)
+    {
+        this.idParticipacao = idParticipacao;
+        this.quantidadeJogos = quantidadeJogos;
+    }
+    
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }
 
     @Override
     public int getIdParticipacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idParticipacao;
     }
 
     @Override
     public int getQuantidadeJogos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.quantidadeJogos;
     }
 }

@@ -19,32 +19,57 @@ package gyouzafoot.Objetos;
 
 /**
  *
- * @author hydrocat
+ * @author wagjub
  */
 public class Participacao implements gyouzafoot.interfaces.Particiapacao{
 
+    private int id;
+    private int idJogador;
+    private int idJogo;
+    private int golsContra;
+    private int golsValidos;
+    
+    Participacao(int id, int idJogador, int idJogo, int golsContra, int golsValidos)
+    {
+        this.id = id;
+        this.idJogador = idJogador;
+        this.idJogo = idJogo;
+        this.golsContra = golsContra;
+        this.golsValidos = golsValidos;
+    }
+    
+       Participacao(int idJogador, int idJogo, int golsContra, int golsValidos)
+    {
+        this.idJogador =idJogador;
+        this.idJogo = idJogo;
+        this.golsContra = golsContra;
+        this.golsValidos = golsValidos;
+    }
+    
+    
     @Override
     public int getIdJogador() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idJogador;
     }
 
     @Override
     public int getIdJogo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idJogo;
     }
+    
 
     @Override
     public int getQuantidadeGols() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.golsValidos;
     }
 
     @Override
     public int getQuantidadeGolsContra() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.golsContra;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }
 }
