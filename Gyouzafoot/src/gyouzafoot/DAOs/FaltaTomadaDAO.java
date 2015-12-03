@@ -29,11 +29,14 @@ import java.util.logging.Logger;
 public class FaltaTomadaDAO {
         
     Connection c;
+    Conexao helper;
       
-    public FaltaTomadaDAO(CredenciaisConexao cc)
+    public FaltaTomadaDAO(CredenciaisConexao cc) throws SQLException
     {
-        this.c = new GeradorConexao().GeradorConexao(cc);
+        this.helper = new Conexao();
+        this.c = helper.getConnection(cc);
     }
+    
     
     
 }

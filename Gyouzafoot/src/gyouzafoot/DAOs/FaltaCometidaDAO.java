@@ -29,9 +29,11 @@ import java.util.logging.Logger;
 public class FaltaCometidaDAO {
         
     Connection c;
+    Conexao helper;
       
-    public FaltaCometidaDAO(CredenciaisConexao cc)
+    public FaltaCometidaDAO(CredenciaisConexao cc) throws SQLException
     {
-        this.c = new GeradorConexao().GeradorConexao(cc);
+        this.helper = new Conexao();
+        this.c = helper.getConnection(cc);
     }
 }
