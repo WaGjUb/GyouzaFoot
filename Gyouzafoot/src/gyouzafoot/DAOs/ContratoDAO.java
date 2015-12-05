@@ -3,14 +3,7 @@ package gyouzafoot.DAOs;
 import gyouzafoot.Objetos.Cartao;
 import java.sql.*;
 import gyouzafoot.Objetos.Contrato;
-<<<<<<< HEAD
-=======
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
->>>>>>> bba5ab66ca16566f5c9d23a64b4aefa187259db6
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * Copyright (C) 2015 wagjub
@@ -60,13 +53,13 @@ public class ContratoDAO {
         
         java.sql.Date entrada = contrato.getEntrada();
                 
-        LocalDate saida = contrato.getSaida();
+        java.sql.Date saida = contrato.getSaida();
                 
         s.setInt(1, contrato.getIdJogador());
-        s.setDate(2, new java.sql.Date( entrada.getYear(), entrada.getMonthValue(), entrada.getDayOfMonth() ));
-        s.setInt(3, contrato.getIdJogador());
-        s.setInt(4, contrato.getIdJogador());
-        s.setInt(5, contrato.getIdJogador());
+        s.setDate(2, entrada);
+        s.setDate(3, saida);
+        s.setInt(4, contrato.getCamiseta());
+        s.setInt(5, contrato.getPosicao());
         
         s.executeUpdate();
 
