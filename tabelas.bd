@@ -13,12 +13,20 @@ create table jogadores(
        primary key( id )
 );
 
+create table posicao(
+       id int,
+       nome varchar(40),
+       sigla varchar(4),
+       primary key( id )
+);
+
 create table contrato(
        id int not null auto_increment,
        id_jogador int,
        entrada date,
        saida date,
        camisa int,
+       posicao int,
        primary key ( id ),
        foreign key (id_jogador) references jogadores( id )
 );

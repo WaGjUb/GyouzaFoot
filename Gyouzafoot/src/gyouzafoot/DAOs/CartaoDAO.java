@@ -30,10 +30,10 @@ import java.util.ArrayList;
 public class CartaoDAO {
 
     Connection c;
-    Conexao helper;
+    AssistenteConexao helper;
 
     public CartaoDAO(CredenciaisConexao cc) throws SQLException {
-        this.helper = new Conexao();
+        this.helper = new AssistenteConexao();
         this.c = helper.getConnection(cc);
     }
 
@@ -111,7 +111,7 @@ public class CartaoDAO {
 
     public static void main(String[] args) {
         CredenciaisConexao cc = new CredenciaisConexao("localhost", "gyouzafoot", "usuario", "senha");
-        //Connection c = new Conexao().Conexao(cc);
+        //Connection c = new AssistenteConexao().AssistenteConexao(cc);
         //Cartao c = new Cartao();
         //c.setIdParticipacao( 3 );
         //new CartaoDAO(cc).inserir( c );

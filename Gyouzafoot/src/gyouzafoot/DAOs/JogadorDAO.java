@@ -33,11 +33,11 @@ import java.util.logging.Logger;
 public class JogadorDAO {
 
     Connection c;
-    Conexao helper;
+    AssistenteConexao helper;
       
     public JogadorDAO(CredenciaisConexao cc)
     {
-        this.helper = new Conexao();
+        this.helper = new AssistenteConexao();
         this.c = helper.getConnection(cc);
     }
     
