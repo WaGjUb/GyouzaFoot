@@ -1,7 +1,14 @@
 package gyouzafoot.DAOs;
 
+import gyouzafoot.Objetos.Cartao;
 import java.sql.*;
 import gyouzafoot.Objetos.Contrato;
+<<<<<<< HEAD
+=======
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+>>>>>>> bba5ab66ca16566f5c9d23a64b4aefa187259db6
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,12 +37,12 @@ import java.util.logging.Logger;
 public class ContratoDAO {
     
     Connection c;
-    AssistenteConexao assistente;
+    Conexao helper;
       
     public ContratoDAO(CredenciaisConexao cc)
     {
-        this.assistente = new AssistenteConexao();
-        c = assistente.getConnection(cc);
+        this.helper = new Conexao();
+        c = helper.getConnection(cc);
         
     }
     

@@ -34,6 +34,12 @@ public class FaltaCometida implements gyouzafoot.interfaces.Falta{
         this.gravidade = gravidade;
     }
     
+     FaltaCometida(int idParticipacao, int gravidade)
+    {
+        this.idParticipacao = idParticipacao;
+        this.gravidade = gravidade;
+    }
+    
     @Override
     public int getIdParticipacao() {
         return this.idParticipacao;

@@ -16,30 +16,53 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package gyouzafoot.Objetos;
-
+import java.time.LocalDate;
 /**
  *
  * @author hydrocat
  */
 public class Jogo implements gyouzafoot.interfaces.Jogo{
 
+    private int id;
+    private String nomeAdversario;
+    private int pontuacaoTime;
+    private int pontuacaoAdversario;
+    private LocalDate data;
+    
+    Jogo(int id, String nomeAdversario, int pontuacaoTime, int pontuacaoAdversario, LocalDate data)
+    {
+        this.id = id;
+        this.nomeAdversario = nomeAdversario;
+        this.pontuacaoTime = pontuacaoTime;
+        this.pontuacaoAdversario = pontuacaoAdversario;
+        this.data = data;
+    }
+    
+        Jogo(String nomeAdversario, int pontuacaoTime, int pontuacaoAdversario, LocalDate data)
+    {
+        this.nomeAdversario = nomeAdversario;
+        this.pontuacaoTime = pontuacaoTime;
+        this.pontuacaoAdversario = pontuacaoAdversario;
+        this.data = data;
+    }
+    
     @Override
     public int getPontuacaoTimeAdversario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.pontuacaoAdversario;
     }
 
     @Override
     public int getPontuacaoTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.pontuacaoTime;
     }
 
     @Override
     public String getNomeAdversario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.nomeAdversario;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     }
 }

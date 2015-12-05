@@ -29,10 +29,11 @@ import java.util.logging.Logger;
 public class ParticipacaoDAO {
  
     Connection c;
+    Conexao helper;
       
-    public ParticipacaoDAO(CredenciaisConexao cc)
+    public ParticipacaoDAO(CredenciaisConexao cc) throws SQLException
     {
-        this.c = new GeradorConexao().GeradorConexao(cc);
+        this.helper = new Conexao();
+        this.c = helper.getConnection(cc);
     }
-    
 }

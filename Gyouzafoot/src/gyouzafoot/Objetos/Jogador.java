@@ -24,18 +24,35 @@ package gyouzafoot.Objetos;
  */
 public class Jogador implements gyouzafoot.interfaces.Jogador{
 
+    private int id;
+    private String nome;
+    private int idade;
+    
+    Jogador(int id, String nome, int idade)
+    {    
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+    }
+     
+    Jogador(String nome, int idade)
+    {    
+        this.nome = nome;
+        this.idade = idade;
+    }
+    
     @Override
     public String getNome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.nome;
     }
 
     @Override
     public int getIdade() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.idade;
     }
 
     @Override
     public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.id;
     } 
 }
