@@ -16,7 +16,7 @@ public interface Contrato {
     public java.sql.Date getEntrada();
     public java.sql.Date getSaida();
     public int getCamiseta();
-    public String getPosicao();
+    public int getPosicao();
     public int getId(); 
 
     /*Setters*/
