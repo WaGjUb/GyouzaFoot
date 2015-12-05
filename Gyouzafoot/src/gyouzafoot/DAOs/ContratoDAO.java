@@ -59,7 +59,7 @@ public class ContratoDAO {
         s.setDate(2, entrada);
         s.setDate(3, saida);
         s.setInt(4, contrato.getCamiseta());
-        s.setInt(5, contrato.getPosicao());
+        s.setInt(5, contrato.getIdPosicao());
         
         s.executeUpdate();
 
