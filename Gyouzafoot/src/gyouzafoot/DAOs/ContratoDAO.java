@@ -1,10 +1,3 @@
-package gyouzafoot.DAOs;
-
-import gyouzafoot.Objetos.Cartao;
-import java.sql.*;
-import gyouzafoot.Objetos.Contrato;
-import java.util.ArrayList;
-
 /*
  * Copyright (C) 2015 wagjub
  *
@@ -22,11 +15,11 @@ import java.util.ArrayList;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+package gyouzafoot.DAOs;
+import java.sql.*;
+import gyouzafoot.Objetos.Contrato;
+import java.util.ArrayList;
 
-/**
- *
- * @author wagjub
- */
 public class ContratoDAO {
     
     Connection c;
@@ -92,39 +85,39 @@ public class ContratoDAO {
 
     }
 
-    public Cartao buscar(int id) throws SQLException {
+    public Contrato buscar(int id) throws SQLException {
         String sql = "select * from cartao_amarelo where id = ?";
         
-        Cartao cartao = null;
+        Contrato contrato = null;
         PreparedStatement s = this.c.prepareStatement(sql);
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
         while (rs.next()) {
-            cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
+            contrato = new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"));
         }
 
         helper.closeAllConnections(rs, c, s);
-        return cartao;
+        return contrato;
     }
     
-    public ArrayList<Cartao> getList() throws SQLException
+    public ArrayList<Contrato> getList() throws SQLException
     {
-        Cartao cartao = null;
-        ArrayList<Cartao> cartoes = new ArrayList<Cartao>();
-        String sql = "select * from cartao_amarelo";
+        Contrato contrato = null;
+        ArrayList<Contrato> contratos = new ArrayList<Contrato>();
+        String sql = "select * from contrato";
         
         PreparedStatement ps = this.c.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )
         {
-            cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
-            cartoes.add(cartao);
+            contrato = new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"));
+            contratos.add(contrato);
         }
         
         helper.closeAllConnections(rs, c, ps);
-        return cartoes;
+        return contratos;
     }
 
     
