@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package gyouzafoot.interfaces;
-import java.time.LocalDate;
-
 /**
  *
  * @author hydrocat
@@ -15,8 +13,8 @@ public interface Contrato {
     Métodos gerais para o acesso aos objetos
     */
     public int getIdJogador();
-    public LocalDate getEntrada();
-    public LocalDate getSaida();
+    public java.sql.Date getEntrada();
+    public java.sql.Date getSaida();
     public int getCamiseta();
     public String getPosicao();
     public int getId(); 
