@@ -1,0 +1,20 @@
+use gyouzafoot;
+
+insert into posicao (id, nome, sigla) values ("","zagueiro","zg");
+insert into posicao (id, nome, sigla) values ("","lateral esquerdo","lt");
+insert into posicao (id, nome, sigla) values ("","lateral direito","lt");
+insert into posicao (id, nome, sigla) values ("","libero","lb");
+insert into posicao (id, nome, sigla) values ("","volante","vol");
+insert into posicao (id, nome, sigla) values ("","ala esquerda","ala");
+insert into posicao (id, nome, sigla) values ("","ala direita","ala");
+insert into posicao (id, nome, sigla) values ("","meia ligacao","mel");
+insert into posicao (id, nome, sigla) values ("","medio centro","mec");
+insert into posicao (id, nome, sigla) values ("","meio lateral direito","mcl");
+insert into posicao (id, nome, sigla) values ("","meio lateral esquerdo","mcl");
+insert into posicao (id, nome, sigla) values ("","medio ofensivo","mo");
+insert into posicao (id, nome, sigla) values ("","asa direito","asa");
+insert into posicao (id, nome, sigla) values ("","asa esquerdo","asa");
+insert into posicao (id, nome, sigla) values ("","ponta esquerda","ex");
+insert into posicao (id, nome, sigla) values ("","ponta direita","ex");
+insert into posicao (id, nome, sigla) values ("","segundo atacante","sa");
+insert into posicao (id, nome, sigla) values ("","centroavante","ca");
