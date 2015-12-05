@@ -51,13 +51,9 @@ public class ContratoDAO {
 
         PreparedStatement s = this.c.prepareStatement(sql);
         
-        java.sql.Date entrada = contrato.getEntrada();
-                
-        java.sql.Date saida = contrato.getSaida();
-                
         s.setInt(1, contrato.getIdJogador());
-        s.setDate(2, entrada);
-        s.setDate(3, saida);
+        s.setDate(2, contrato.getEntrada());
+        s.setDate(3, contrato.getSaida());
         s.setInt(4, contrato.getCamiseta());
         s.setInt(5, contrato.getIdPosicao());
         
@@ -68,11 +64,11 @@ public class ContratoDAO {
 
     }
 
-    public boolean remover(Cartao cartao) throws SQLException {
-        String sql = "delete from cartao_amarelo where id = ?";
+    public boolean remover(Contrato contrato) throws SQLException {
+        String sql = "delete from contrato where id = ?";
 
         PreparedStatement s = this.c.prepareStatement(sql);
-        s.setInt(1, cartao.getId());
+        s.setInt(1, contrato.getId());
         s.executeQuery();
 
         helper.closeAllConnections(c, s);
@@ -80,12 +76,15 @@ public class ContratoDAO {
 
     }
 
-    public boolean alterar(Cartao cartao) throws SQLException {
-        String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
-
+    public boolean alterar(Contrato contrato) throws SQLException {
+        String sql = "update contrato set id_jogador=? entrada=? saida=? camisa=? where id = ?";
         PreparedStatement s = this.c.prepareStatement(sql);
-        s.setInt(1, cartao.getIdParticipacao());
-        s.setInt(2, cartao.getId());
+        
+        s.setInt(1, contrato.getIdJogador());
+        s.setDate(2, contrato.getEntrada());
+        s.setDate(3, contrato.getSaida());
+        s.setInt(4, contrato.getCamiseta());
+        s.setInt(5, contrato.getId());
         s.executeQuery();
         
         helper.closeAllConnections(c, s);
