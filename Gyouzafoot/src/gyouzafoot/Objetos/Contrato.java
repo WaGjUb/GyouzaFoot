@@ -16,7 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package gyouzafoot.Objetos;
-import java.time.LocalDate;
 
 /**
  *
@@ -26,12 +25,12 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     
     private int id;
     private int idJogador;
-    private LocalDate entrada;
-    private LocalDate saida;
+    private java.sql.Date entrada;
+    private java.sql.Date saida;
     private int camisa;
     private String posicao;
     
-    Contrato (int id, int idJogador, LocalDate entrada, LocalDate saida, int camisa, String posicao) {    
+    Contrato (int id, int idJogador, java.sql.Date entrada, java.sql.Date saida, int camisa, String posicao) {    
         this.id = id;
         this.idJogador = idJogador;
         this.entrada = entrada;
@@ -40,7 +39,7 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
         this.posicao = posicao;
     }
     
-       Contrato (int idJogador, LocalDate entrada, LocalDate saida, int camisa, String posicao) {    
+       Contrato (int idJogador, java.sql.Date entrada, java.sql.Date saida, int camisa, String posicao) {    
         this.idJogador = idJogador;
         this.entrada = entrada;
         this.saida = saida;
@@ -54,12 +53,12 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     }
 
     @Override
-    public LocalDate getEntrada() {
+    public java.sql.Date getEntrada() {
         return this.entrada;
     }
 
     @Override
-    public LocalDate getSaida() {
+    public java.sql.Date getSaida() {
         return this.saida;
     }
 

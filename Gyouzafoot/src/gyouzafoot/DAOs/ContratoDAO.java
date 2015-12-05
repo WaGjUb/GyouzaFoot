@@ -2,8 +2,6 @@ package gyouzafoot.DAOs;
 
 import java.sql.*;
 import gyouzafoot.Objetos.Contrato;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,8 +51,8 @@ public class ContratoDAO {
 
         PreparedStatement s = this.c.prepareStatement(sql);
         
-        LocalDate entrada = contrato.getEntrada();
-        Calendar.DATE c = new Calendar
+        java.sql.Date entrada = contrato.getEntrada();
+                
         LocalDate saida = contrato.getSaida();
                 
         s.setInt(1, contrato.getIdJogador());
