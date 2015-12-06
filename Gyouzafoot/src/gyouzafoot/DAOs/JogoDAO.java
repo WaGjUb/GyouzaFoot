@@ -29,16 +29,15 @@ import java.util.ArrayList;
 
 public class JogoDAO {
     
-    Connection conexao;
-    Conexao helper;
+    AssistenteConexao helper;
       
-    public JogoDAO(CredenciaisConexao cc) throws SQLException
+    public JogoDAO(AssistenteConexao helper) throws SQLException
     {
-        this.helper = new Conexao();
-        this.conexao = helper.getConnection(cc);
+        this.helper = helper;
     }
     
-             public boolean inserir(Jogo jogo) throws SQLException {
+    public boolean inserir(Jogo jogo) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "insert into Jogo (" +
                 "nome_adversario,"+
                 "PTgyouza,"+
@@ -46,7 +45,7 @@ public class JogoDAO {
                 "data)"+
                 "values( ?,?,?,? )";
 
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
@@ -60,9 +59,10 @@ public class JogoDAO {
     }
 
     public boolean remover(Jogo jogo) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "delete from Jogo where id = ?";
 
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, jogo.getId());
         s.executeQuery();
 
@@ -72,8 +72,9 @@ public class JogoDAO {
     }
 
     public boolean alterar(Jogo jogo) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "update Jogo set nome_adversario=? PTgyouza=? PTadversario=? data=? where id = ?";
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
@@ -88,10 +89,11 @@ public class JogoDAO {
     }
 
     public Jogo buscar(int id) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "select * from Jogo where id = ?";
         
         Jogo jogo = null;
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
@@ -109,10 +111,11 @@ public class JogoDAO {
     
     public ArrayList<Jogo> getList() throws SQLException
     {
+        Connection conexao = helper.getConnection();
         ArrayList<Jogo> jogadors = new ArrayList<>();
         String sql = "select * from Jogo";
         
-        PreparedStatement ps = this.conexao.prepareStatement(sql);
+        PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )

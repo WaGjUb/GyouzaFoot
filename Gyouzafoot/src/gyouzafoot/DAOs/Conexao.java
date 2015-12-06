@@ -69,22 +69,4 @@ public class Conexao {
         closeConnection(c);
         closeConnection(p);
     }
-        
-    
-    
-    public static void main(String[] args) {
-                CredenciaisConexao cc = new CredenciaisConexao("localhost","gyouzafoot", "Usuario", "senha");
-        Connection c = new Conexao().getConnection(cc);
-        System.out.println(c.toString());
-        try {
-            ResultSet r = c.prepareStatement("show tables;").executeQuery();
-            while ( r.next() )
-            {
-                System.out.println( r.getString(1) );
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
 }

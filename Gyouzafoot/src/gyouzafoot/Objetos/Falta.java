@@ -21,20 +21,21 @@ package gyouzafoot.Objetos;
  *
  * @author hydrocat
  */
-public class FaltaTomada implements gyouzafoot.interfaces.Falta{
+public class Falta implements gyouzafoot.interfaces.Falta{
 
     private int id;
     private int idParticipacao;
     private int gravidade;
     
-    FaltaTomada(int id, int idParticipacao, int gravidade)
+    
+    public Falta(int id, int idParticipacao, int gravidade)
     {
         this.id = id;
         this.idParticipacao = idParticipacao;
         this.gravidade = gravidade;
     }
     
-     FaltaTomada(int idParticipacao, int gravidade)
+    public Falta(int idParticipacao, int gravidade)
     {
         this.idParticipacao = idParticipacao;
         this.gravidade = gravidade;

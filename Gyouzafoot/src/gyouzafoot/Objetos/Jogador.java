@@ -55,4 +55,10 @@ public class Jogador implements gyouzafoot.interfaces.Jogador{
     public int getId() {
         return this.id;
     } 
+    
+    @Override
+    public String toString()
+    {
+        return this.nome+" "+this.idade+" "+this.id;
+    }
 }

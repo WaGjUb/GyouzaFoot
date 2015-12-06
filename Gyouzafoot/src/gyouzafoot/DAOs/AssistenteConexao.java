@@ -26,8 +26,9 @@ import java.sql.*;
  */
 public class AssistenteConexao {
     
-    public Connection getConnection( CredenciaisConexao c )
+    public Connection getConnection( )
     {
+        CredenciaisConexao c = new CredenciaisConexao("localhost", "gyouzafoot", "hydrocat", "");
         try 
         {
             String url = "jdbc:mysql://"+c.getIp()+"/"+c.getNomeBanco();
@@ -70,21 +71,4 @@ public class AssistenteConexao {
         closeConnection(p);
     }
         
-    
-    
-    public static void main(String[] args) {
-                CredenciaisConexao cc = new CredenciaisConexao("localhost","gyouzafoot", "Usuario", "senha");
-        Connection c = new AssistenteConexao().getConnection(cc);
-        System.out.println(c.toString());
-        try {
-            ResultSet r = c.prepareStatement("show tables;").executeQuery();
-            while ( r.next() )
-            {
-                System.out.println( r.getString(1) );
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
 }

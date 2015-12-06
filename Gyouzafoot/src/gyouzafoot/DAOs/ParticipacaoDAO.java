@@ -27,16 +27,15 @@ import java.util.ArrayList;
  */
 public class ParticipacaoDAO {
  
-    Connection conexao;
-    Conexao helper;
+    AssistenteConexao helper;
       
-    public ParticipacaoDAO(CredenciaisConexao cc) throws SQLException
+    public ParticipacaoDAO(AssistenteConexao helper) throws SQLException
     {
-        this.helper = new Conexao();
-        this.conexao = helper.getConnection(cc);
+        this.helper = helper;
     }
     
-         public boolean inserir(Participacao participacao) throws SQLException {
+    public boolean inserir(Participacao participacao) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "insert into participacao (" +
                 "id_jogador,"+
                 "id_jogo,"+
@@ -44,7 +43,7 @@ public class ParticipacaoDAO {
                 "gol_valido"+
                 "values( ?,?,?,? )";
 
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, participacao.getIdJogador());
         s.setInt(2, participacao.getIdJogo());
@@ -59,9 +58,10 @@ public class ParticipacaoDAO {
     }
 
     public boolean remover(Participacao participacao) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "delete from participacao where id = ?";
 
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, participacao.getId());
         s.executeQuery();
 
@@ -71,8 +71,9 @@ public class ParticipacaoDAO {
     }
 
     public boolean alterar(Participacao participacao) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "update participacao set id_jogador=? id_jogo=? gol_contra=? gol_valido=? where id = ?";
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, participacao.getIdJogador());
         s.setInt(2, participacao.getIdJogo());
@@ -87,10 +88,11 @@ public class ParticipacaoDAO {
     }
 
     public Participacao buscar(int id) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "select * from participacao where id = ?";
         
         Participacao participacao = null;
-        PreparedStatement s = this.conexao.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
@@ -110,10 +112,11 @@ public class ParticipacaoDAO {
     
     public ArrayList<Participacao> getList() throws SQLException
     {
+        Connection conexao = helper.getConnection();
         ArrayList<Participacao> participacoes = new ArrayList<>();
         String sql = "select * from participacao";
         
-        PreparedStatement ps = this.conexao.prepareStatement(sql);
+        PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )

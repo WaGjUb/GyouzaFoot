@@ -29,56 +29,58 @@ import java.util.ArrayList;
  */
 public class CartaoDAO {
 
-    Connection c;
     AssistenteConexao helper;
 
-    public CartaoDAO(CredenciaisConexao cc) throws SQLException {
+    public CartaoDAO(AssistenteConexao helper) throws SQLException {
         this.helper = new AssistenteConexao();
-        this.c = helper.getConnection(cc);
     }
 
     public boolean inserir(Cartao cartao) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "insert into cartao_amarelo (id_participacao) values (?)";
 
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, cartao.getIdParticipacao());
         s.executeUpdate();
 
-        helper.closeAllConnections(c, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public boolean remover(Cartao cartao) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "delete from cartao_amarelo where id = ?";
 
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, cartao.getId());
         s.executeQuery();
 
-        helper.closeAllConnections(c, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public boolean alterar(Cartao cartao) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
 
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, cartao.getIdParticipacao());
         s.setInt(2, cartao.getId());
         s.executeQuery();
         
-        helper.closeAllConnections(c, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public Cartao buscar(int id) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "select * from cartao_amarelo where id = ?";
         
         Cartao cartao = null;
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
@@ -86,36 +88,28 @@ public class CartaoDAO {
             cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
         }
 
-        helper.closeAllConnections(rs, c, s);
+        helper.closeAllConnections(rs, conexao, s);
         return cartao;
     }
     
     public ArrayList<Cartao> getList() throws SQLException
     {
+        Connection conexao = helper.getConnection();
         Cartao cartao = null;
         ArrayList<Cartao> cartoes = new ArrayList<Cartao>();
         String sql = "select * from cartao_amarelo";
         
-        PreparedStatement ps = this.c.prepareStatement(sql);
+        PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )
         {
-            cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
-            cartoes.add(cartao);
+            cartoes.add(
+                new Cartao( rs.getInt("id"), rs.getInt("id_participacao"))
+            );
         }
         
-        helper.closeAllConnections(rs, c, ps);
+        helper.closeAllConnections(rs, conexao, ps);
         return cartoes;
-    }
-
-    public static void main(String[] args) {
-        CredenciaisConexao cc = new CredenciaisConexao("localhost", "gyouzafoot", "usuario", "senha");
-        //Connection c = new AssistenteConexao().AssistenteConexao(cc);
-        //Cartao c = new Cartao();
-        //c.setIdParticipacao( 3 );
-        //new CartaoDAO(cc).inserir( c );
-        //Cartao cartao = new CartaoDAO(cc).buscar( 0 );
-        //System.out.println(cartao.getId() +" "+ cartao.getIdParticipacao());
     }
 }

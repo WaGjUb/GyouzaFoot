@@ -22,18 +22,16 @@ import java.util.ArrayList;
 
 public class ContratoDAO {
     
-    Connection c;
-    Conexao helper;
+    AssistenteConexao helper;
       
-    public ContratoDAO(CredenciaisConexao cc)
+    public ContratoDAO(AssistenteConexao helper)
     {
-        this.helper = new Conexao();
-        c = helper.getConnection(cc);
-        
+        this.helper = helper;
     }
     
     
     public boolean inserir(Contrato contrato) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "insert into contrato (" +
                 "id_jogador,"+
                 "entrada,"+
@@ -42,7 +40,7 @@ public class ContratoDAO {
                 "posicao"+
                 ") values ( ?,?,?,?,?)";
 
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, contrato.getIdJogador());
         s.setDate(2, contrato.getEntrada());
@@ -52,26 +50,28 @@ public class ContratoDAO {
         
         s.executeUpdate();
 
-        helper.closeAllConnections(c, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public boolean remover(Contrato contrato) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "delete from contrato where id = ?";
 
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, contrato.getId());
         s.executeQuery();
 
-        helper.closeAllConnections(c, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public boolean alterar(Contrato contrato) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "update contrato set id_jogador=? entrada=? saida=? camisa=? where id = ?";
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, contrato.getIdJogador());
         s.setDate(2, contrato.getEntrada());
@@ -80,16 +80,17 @@ public class ContratoDAO {
         s.setInt(5, contrato.getId());
         s.executeQuery();
         
-        helper.closeAllConnections(c, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public Contrato buscar(int id) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "select * from cartao_amarelo where id = ?";
         
         Contrato contrato = null;
-        PreparedStatement s = this.c.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
@@ -97,26 +98,27 @@ public class ContratoDAO {
             contrato = new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"));
         }
 
-        helper.closeAllConnections(rs, c, s);
+        helper.closeAllConnections(rs, conexao, s);
         return contrato;
     }
     
     public ArrayList<Contrato> getList() throws SQLException
     {
-        Contrato contrato = null;
-        ArrayList<Contrato> contratos = new ArrayList<Contrato>();
+        Connection conexao = helper.getConnection();
+        ArrayList<Contrato> contratos = new ArrayList<>();
         String sql = "select * from contrato";
         
-        PreparedStatement ps = this.c.prepareStatement(sql);
+        PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )
         {
-            contrato = new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"));
-            contratos.add(contrato);
+            contratos.add(
+            new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"))
+            );
         }
         
-        helper.closeAllConnections(rs, c, ps);
+        helper.closeAllConnections(rs, conexao, ps);
         return contratos;
     }
 
