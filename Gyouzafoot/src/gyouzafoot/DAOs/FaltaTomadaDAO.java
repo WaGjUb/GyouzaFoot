@@ -25,64 +25,65 @@ import java.util.ArrayList;
  */
 public class FaltaTomadaDAO {
         
-    Connection con;
-    Conexao helper;
+    AssistenteConexao helper;
       
-    public FaltaTomadaDAO(CredenciaisConexao cc) throws SQLException
+    public FaltaTomadaDAO(AssistenteConexao helper) throws SQLException
     {
-        this.helper = new Conexao();
-        this.con = helper.getConnection(cc);
+        this.helper = helper;
     }
     
      public boolean inserir(Falta falta) throws SQLException {
-        String sql = "insert into falta_tomadas (" +
+        Connection conexao = helper.getConnection();
+        String sql = "insert into faltas_tomadas (" +
                 " id_participacao,"+
                 "gravidade )" +
                 "values( ?,? )";
 
-        PreparedStatement s = this.con.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, falta.getIdParticipacao());
         s.setInt(2, falta.getGravidade());
         
         s.executeUpdate();
 
-        helper.closeAllConnections(con, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public boolean remover(Falta falta) throws SQLException {
-        String sql = "delete from falta_tomadas where id = ?";
+        Connection conexao = helper.getConnection();
+        String sql = "delete from faltas_tomadas where id = ?";
 
-        PreparedStatement s = this.con.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, falta.getId());
         s.executeQuery();
 
-        helper.closeAllConnections(con, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public boolean alterar(Falta falta) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "update faltas_tomadas set id_participacao=? gravidade=? where id = ?";
-        PreparedStatement s = this.con.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, falta.getIdParticipacao());
-        s.setInt(2, falta.getGravidade());
-        s.setInt(3, falta.getId());
+        s.setInt(5, falta.getGravidade());
         s.executeQuery();
         
-        helper.closeAllConnections(con, s);
+        helper.closeAllConnections(conexao, s);
         return true;
 
     }
 
     public Falta buscar(int id) throws SQLException {
+        Connection conexao = helper.getConnection();
         String sql = "select * from faltas_tomadas where id = ?";
         
         Falta falta = null;
-        PreparedStatement s = this.con.prepareStatement(sql);
+        PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
@@ -90,16 +91,17 @@ public class FaltaTomadaDAO {
             falta = new Falta(rs.getInt("id"),rs.getInt("id_participacao"),rs.getInt("gravidade"));
         }
 
-        helper.closeAllConnections(rs, con, s);
+        helper.closeAllConnections(rs, conexao, s);
         return falta;
     }
     
     public ArrayList<Falta> getList() throws SQLException
     {
+        Connection conexao = helper.getConnection();
         ArrayList<Falta> faltas = new ArrayList<>();
-        String sql = "select * from falta";
+        String sql = "select * from faltas_tomadas";
         
-        PreparedStatement ps = this.con.prepareStatement(sql);
+        PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )
@@ -109,7 +111,7 @@ public class FaltaTomadaDAO {
             );
         }
         
-        helper.closeAllConnections(rs, con, ps);
+        helper.closeAllConnections(rs, conexao, ps);
         return faltas;
     }
 
