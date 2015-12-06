@@ -93,7 +93,7 @@ public class JogadorDAO {
     public ArrayList<Jogador> getList() throws SQLException
     {
         ArrayList<Jogador> jogadors = new ArrayList<>();
-        String sql = "select * from jogador";
+        String sql = "select * from jogadores";
         
         PreparedStatement ps = this.conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
