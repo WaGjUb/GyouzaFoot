@@ -14,7 +14,7 @@ public interface Jogo {
     public int getPontuacaoTime();
     public String getNomeAdversario();
     public int getId();
-    public java.sql.Date getDate();
+    public java.sql.Date getData();
 
     //Estes objetos não sao mutaveis.
     //public void setPontuacaoTimeAdversario( int Pontos);
