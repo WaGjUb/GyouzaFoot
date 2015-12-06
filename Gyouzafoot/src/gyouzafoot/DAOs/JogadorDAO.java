@@ -66,7 +66,8 @@ public class JogadorDAO {
         PreparedStatement s = this.conexao.prepareStatement(sql);
         
         s.setString(1, jogador.getNome());
-        s.setInt(5, jogador.getIdade());
+        s.setInt(2, jogador.getIdade());
+        s.setInt(3, jogador.getId());
         s.executeQuery();
         
         helper.closeAllConnections(conexao, s);
