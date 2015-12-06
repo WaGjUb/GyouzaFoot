@@ -29,7 +29,7 @@ public class Participacao implements gyouzafoot.interfaces.Particiapacao{
     private int golsContra;
     private int golsValidos;
     
-    Participacao(int id, int idJogador, int idJogo, int golsContra, int golsValidos)
+    public Participacao(int id, int idJogador, int idJogo, int golsContra, int golsValidos)
     {
         this.id = id;
         this.idJogador = idJogador;
@@ -38,7 +38,7 @@ public class Participacao implements gyouzafoot.interfaces.Particiapacao{
         this.golsValidos = golsValidos;
     }
     
-       Participacao(int idJogador, int idJogo, int golsContra, int golsValidos)
+    public Participacao(int idJogador, int idJogo, int golsContra, int golsValidos)
     {
         this.idJogador =idJogador;
         this.idJogo = idJogo;
