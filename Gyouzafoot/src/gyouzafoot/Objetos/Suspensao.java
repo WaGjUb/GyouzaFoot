@@ -27,14 +27,14 @@ public class Suspensao  implements gyouzafoot.interfaces.Suspensao{
     private int idParticipacao;
     private int quantidadeJogos;
     
-    Suspensao(int id, int idParticipacao, int quantidadeJogos)
+    public Suspensao(int id, int idParticipacao, int quantidadeJogos)
     {
         this.id = id;
         this.idParticipacao = idParticipacao;
         this.quantidadeJogos = quantidadeJogos;
     }
    
-    Suspensao(int idParticipacao, int quantidadeJogos)
+    public Suspensao(int idParticipacao, int quantidadeJogos)
     {
         this.idParticipacao = idParticipacao;
         this.quantidadeJogos = quantidadeJogos;
