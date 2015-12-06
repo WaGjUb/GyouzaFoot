@@ -19,26 +19,95 @@ package gyouzafoot.DAOs;
 
 import java.sql.*;
 import gyouzafoot.Objetos.Jogador;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- *
- * @author WaGjUb
- */
-
-
-
+import java.util.ArrayList;
 
 public class JogadorDAO {
 
-    Connection c;
+    Connection conexao;
     AssistenteConexao helper;
       
     public JogadorDAO(CredenciaisConexao cc)
     {
         this.helper = new AssistenteConexao();
-        this.c = helper.getConnection(cc);
+        this.conexao = helper.getConnection(cc);
     }
+    
+         public boolean inserir(Jogador jogador) throws SQLException {
+        String sql = "insert into jogadores (" +
+                "idade,"+
+                "nome )" +
+                "values( ?,? )";
+
+        PreparedStatement s = this.conexao.prepareStatement(sql);
+        
+        s.setString(1, jogador.getNome());
+        s.setInt(2, jogador.getIdade());
+        
+        s.executeUpdate();
+        helper.closeAllConnections(conexao, s);
+        return true;
+
+    }
+
+    public boolean remover(Jogador jogador) throws SQLException {
+        String sql = "delete from jogadores where id = ?";
+
+        PreparedStatement s = this.conexao.prepareStatement(sql);
+        s.setInt(1, jogador.getId());
+        s.executeQuery();
+
+        helper.closeAllConnections(conexao, s);
+        return true;
+
+    }
+
+    public boolean alterar(Jogador jogador) throws SQLException {
+        String sql = "update jogadores set nome=? idade=? where id = ?";
+        PreparedStatement s = this.conexao.prepareStatement(sql);
+        
+        s.setString(1, jogador.getNome());
+        s.setInt(5, jogador.getIdade());
+        s.executeQuery();
+        
+        helper.closeAllConnections(conexao, s);
+        return true;
+
+    }
+
+    public Jogador buscar(int id) throws SQLException {
+        String sql = "select * from jogadores where id = ?";
+        
+        Jogador jogador = null;
+        PreparedStatement s = this.conexao.prepareStatement(sql);
+        s.setInt(1, id);
+        ResultSet rs = s.executeQuery();
+
+        while (rs.next()) {
+            jogador = new Jogador(rs.getInt("id"),rs.getString("nome"),rs.getInt("idade"));
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return jogador;
+    }
+    
+    public ArrayList<Jogador> getList() throws SQLException
+    {
+        ArrayList<Jogador> jogadors = new ArrayList<>();
+        String sql = "select * from jogador";
+        
+        PreparedStatement ps = this.conexao.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            jogadors.add(
+                new Jogador(rs.getInt("id"),rs.getString("nome"),rs.getInt("idade"))
+            );
+        }
+        
+        helper.closeAllConnections(rs, conexao, ps);
+        return jogadors;
+    }
+
     
 }
