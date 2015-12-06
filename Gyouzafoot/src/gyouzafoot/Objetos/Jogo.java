@@ -67,7 +67,7 @@ public class Jogo implements gyouzafoot.interfaces.Jogo{
     }
 
     @Override
-    public Date getDate() {
+    public Date getData() {
         return this.data;
     }
 }
