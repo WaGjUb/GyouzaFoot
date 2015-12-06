@@ -69,7 +69,8 @@ public class FaltaTomadaDAO {
         PreparedStatement s = this.con.prepareStatement(sql);
         
         s.setInt(1, falta.getIdParticipacao());
-        s.setInt(5, falta.getGravidade());
+        s.setInt(2, falta.getGravidade());
+        s.setInt(3, falta.getId());
         s.executeQuery();
         
         helper.closeAllConnections(con, s);
