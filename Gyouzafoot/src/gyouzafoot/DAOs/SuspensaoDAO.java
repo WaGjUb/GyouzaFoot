@@ -96,6 +96,7 @@ public class SuspensaoDAO {
         return suspensao;
     }
     
+    
     public ArrayList<Suspensao> getList() throws SQLException
     {
         Connection conexao = helper.getConnection();
