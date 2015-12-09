@@ -28,7 +28,7 @@ public class AssistenteConexao {
     
     public Connection getConnection( )
     {
-        CredenciaisConexao c = new CredenciaisConexao("localhost", "gyouzafoot", "root", "wagjub");
+        CredenciaisConexao c = new CredenciaisConexao("localhost", "gyouzafoot", "hydrocat", "");
         try 
         {
             String url = "jdbc:mysql://"+c.getIp()+"/"+c.getNomeBanco();
