@@ -50,7 +50,7 @@ public class JogoDAO {
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
         s.setInt(3, jogo.getPontuacaoTimeAdversario());
-        s.setDate(4, jogo.getData());
+        s.setDate(4, (Date) jogo.getData());
         
         s.executeUpdate();
         helper.closeAllConnections(conexao, s);
@@ -79,7 +79,7 @@ public class JogoDAO {
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
         s.setInt(3, jogo.getPontuacaoTimeAdversario());
-        s.setDate(4, jogo.getData());
+        s.setDate(4, (Date) jogo.getData());
         s.setInt(5, jogo.getId());
         s.executeQuery();
         
