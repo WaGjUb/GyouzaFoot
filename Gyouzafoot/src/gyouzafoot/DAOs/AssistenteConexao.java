@@ -28,7 +28,7 @@ public class AssistenteConexao {
     
     public Connection getConnection( )
     {
-        CredenciaisConexao c = new CredenciaisConexao("localhost", "gyouzafoot", "hydrocat", "");
+        CredenciaisConexao c = new CredenciaisConexao("localhost", "gyouzafoot", "root", "wagjub");
         try 
         {
             String url = "jdbc:mysql://"+c.getIp()+"/"+c.getNomeBanco();
@@ -36,7 +36,7 @@ public class AssistenteConexao {
             
         }catch( SQLException e )
         {
-            System.out.println("Erro na conecção, "+ e.getMessage() );
+            System.out.println("Erro na conexão, "+ e.getMessage() );
         }
         
         //se falhar..

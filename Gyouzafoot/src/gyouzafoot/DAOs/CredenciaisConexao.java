@@ -27,8 +27,7 @@ public class CredenciaisConexao {
     private String usuario;
     private String senha;
  
-    public CredenciaisConexao(String ip, String nomeBanco,
-                                String usuario, String senha)
+    public CredenciaisConexao(String ip, String nomeBanco, String usuario, String senha)
     {
         this.ip = ip;
         this.nomeBanco = nomeBanco;

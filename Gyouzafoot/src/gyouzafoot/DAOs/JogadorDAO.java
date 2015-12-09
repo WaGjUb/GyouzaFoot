@@ -50,12 +50,13 @@ public class JogadorDAO {
 
     public boolean remover(Jogador jogador) throws SQLException {
         Connection conexao = helper.getConnection();
-        String sql = "delete from jogadores where id = ?";
+        String sql = "delete from jogadores where nome = ? and idade = ?";
 
         PreparedStatement s = conexao.prepareStatement(sql);
-        s.setInt(1, jogador.getId());
-        s.executeQuery();
-
+        s.setString(1, jogador.getNome());
+        s.setInt(2, jogador.getIdade());
+        
+        s.executeUpdate();
         helper.closeAllConnections(conexao, s);
         return true;
 
@@ -69,8 +70,8 @@ public class JogadorDAO {
         s.setString(1, jogador.getNome());
         s.setInt(2, jogador.getIdade());
         s.setInt(3, jogador.getId());
-        s.executeQuery();
-        
+ 
+        s.executeUpdate();
         helper.closeAllConnections(conexao, s);
         return true;
 
