@@ -26,9 +26,10 @@ create table contrato(
        entrada date,
        saida date,
        camisa int,
-       posicao int,
+       id_posicao int,
        primary key ( id ),
-       foreign key (id_jogador) references jogadores( id )
+       foreign key (id_jogador) references jogadores( id ),
+       foreign key (id_posicao) references posicao( id )
 );
 
 create table posicao(

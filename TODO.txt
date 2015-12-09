@@ -1,0 +1,13 @@
+Janela principal do programa
+	Esta janela deve fazer:
+	Criar um jogo, associar as participações,faltas, suspensões, jogadores e tudo mais
+	
+A janela de inserir um jogador( e associar um contrato) já está pronta
+
+Janela de Estatísticas.
+	Recomendo fazer um objeto que guarde as estatísticas em atributos e dapois
+	criar um "EstatísticasDAO" que executa o select e preence o objeto "estatísticas"
+	O objeto "estatisticas" pode se auto-calcular outras informações, como média e etc
+	A janela de estatísticas pode então apenas acessar os atributos do objeto "estatisticas"
+
+	O nome "estatisticas" e "estatísticasDAO" pdem ser mudados.
