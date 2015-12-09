@@ -32,13 +32,6 @@ create table contrato(
        foreign key (id_posicao) references posicao( id )
 );
 
-create table posicao(
-	id int not null auto_increment,
-	sigla varchar(5),
-	nome varchar(30),
-	primary key( id )
-);
-
 create table jogo(
 	id int not null auto_increment,
 	nome_adversario varchar(100),
