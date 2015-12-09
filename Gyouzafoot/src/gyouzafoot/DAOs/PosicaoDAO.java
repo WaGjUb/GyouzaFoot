@@ -17,6 +17,13 @@
  */
 package gyouzafoot.DAOs;
 
+import com.mysql.jdbc.Connection;
+import gyouzafoot.Objetos.Posicao;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author hydrocat
@@ -29,5 +36,27 @@ public class PosicaoDAO {
         this.helper = helper;
     }
     
+    public ArrayList<Posicao> getList() throws SQLException
+    {
+        java.sql.Connection conexao = helper.getConnection();
+        ArrayList<Posicao> lista = new ArrayList<>();
+        PreparedStatement ps = conexao.prepareStatement("select * from posicao");
+        
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            lista.add(
+                    new Posicao(
+                            rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("sigla")
+                    )
+            );
+        }
+        
+        helper.closeAllConnections(rs,conexao,ps);
+        return lista;
+    }
     
 }

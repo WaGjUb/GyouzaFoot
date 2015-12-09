@@ -17,17 +17,68 @@
  */
 package Janelas;
 
+import gyouzafoot.DAOs.AssistenteConexao;
+import gyouzafoot.DAOs.ContratoDAO;
+import gyouzafoot.DAOs.JogadorDAO;
+import gyouzafoot.DAOs.PosicaoDAO;
+import gyouzafoot.Objetos.Contrato;
+import gyouzafoot.Objetos.Jogador;
+import gyouzafoot.Objetos.Posicao;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hydrocat
  */
-public class CadastroJogador extends javax.swing.JFrame {
-
+public class CadastroJogador2 extends javax.swing.JFrame {
+    private final AssistenteConexao helper;
+    
     /**
      * Creates new form CadastroJogador
+     * @param helper
      */
-    public CadastroJogador() {
+    public CadastroJogador2( AssistenteConexao helper ) throws SQLException {
         initComponents();
+        
+        this.helper = helper;
+        //inicializando o comboBox do numero da camiseta
+        cbCamisa.removeAllItems();
+        for( int i=0; i<100; i++ )
+        {
+            cbCamisa.addItem(i+"");
+        }
+        
+        //inicializando o comboBox da data de entrada
+        cbEntradaAno.removeAllItems();
+        cbEntradaMes.removeAllItems();
+        cbEntradaDia.removeAllItems();
+        for( int i=1; i<32; i++){
+            if( i<13 )
+            {cbEntradaMes.addItem(i+"");}
+            cbEntradaDia.addItem(i+"");
+            cbEntradaAno.addItem((i+2000)+"");
+        }
+        
+        //inicializa o combobox das posiçẽs disponiveis
+        ArrayList<Posicao> posicoes = new PosicaoDAO(helper).getList();
+        cbPosicao.removeAllItems();
+        for( Posicao p : posicoes)
+        {
+            cbPosicao.addItem( p.getNome() );
+        }
+        
+        //inicializando o combobox de idades
+        cbIdade.removeAllItems();
+        for( int i=20; i<70; i++)
+        {
+            cbIdade.addItem(i+"");
+        }
     }
 
     /**
@@ -48,13 +99,13 @@ public class CadastroJogador extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cbEntradaAno = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbCamisa = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         cbPosicao = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbIdade = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -115,7 +166,7 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jLabel7.setText("Camisa");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCamisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setText("Posição");
 
@@ -135,7 +186,7 @@ public class CadastroJogador extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbCamisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbPosicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -144,7 +195,7 @@ public class CadastroJogador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbCamisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -154,11 +205,11 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbIdade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Idade");
 
-        jTextField1.setColumns(20);
+        tfNome.setColumns(20);
 
         jLabel1.setText("Nome");
 
@@ -169,10 +220,10 @@ public class CadastroJogador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -180,17 +231,27 @@ public class CadastroJogador extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Inserir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -227,6 +288,64 @@ public class CadastroJogador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEntradaMesActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if( tfNome.getText().length() > 40 )
+        {
+            JOptionPane.showMessageDialog(this,"Nome com mais de 40 Caracteres, Jogador não criado");
+        }else
+        {
+            try {
+                // 1 insere jodaor no banco
+                // 2 pega a lista de jogadores
+                // 3 pega o jogador da lista (agora, com o devido id)
+                // 4 cria o contrato com o jogador já inserido na lista
+                
+                // 1
+                JogadorDAO jdao = new JogadorDAO(helper);
+                int idade = cbIdade.getSelectedIndex()+1;
+                String nome = tfNome.getText();
+                jdao.inserir( new Jogador(nome, idade));
+                
+                // 2 
+                ArrayList<Jogador> jogadores = jdao.getList();
+                
+                // 3;
+                Jogador j = null;
+                for( Jogador i : jogadores )
+                {
+                    if( (i.getIdade() + i.getNome()).equals(idade + nome) )
+                    {
+                        j = i;
+                        break;
+                    }
+                }
+                
+                // 4 
+                ContratoDAO cdao = new ContratoDAO(helper);
+                cdao.inserir(
+                    new Contrato(
+                            j.getId(),
+                            new Date(cbEntradaAno.getSelectedIndex()+2001,
+                                    cbEntradaMes.getSelectedIndex()+1,
+                                    cbEntradaDia.getSelectedIndex()+1
+                                ),
+                            new Date(idade, WIDTH, idade),
+                            ABORT,
+                            idade)
+                )
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroJogador2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,33 +363,38 @@ public class CadastroJogador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroJogador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroJogador2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroJogador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroJogador2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroJogador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroJogador2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroJogador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroJogador2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroJogador().setVisible(true);
+                try {
+                    new CadastroJogador2( new AssistenteConexao() ).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CadastroJogador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbCamisa;
     private javax.swing.JComboBox<String> cbEntradaAno;
     private javax.swing.JComboBox<String> cbEntradaDia;
     private javax.swing.JComboBox<String> cbEntradaMes;
+    private javax.swing.JComboBox<String> cbIdade;
     private javax.swing.JComboBox<String> cbPosicao;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -281,6 +405,6 @@ public class CadastroJogador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }
