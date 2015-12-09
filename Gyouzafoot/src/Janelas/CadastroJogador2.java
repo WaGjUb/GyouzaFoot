@@ -38,6 +38,7 @@ import javax.swing.JOptionPane;
  */
 public class CadastroJogador2 extends javax.swing.JFrame {
     private final AssistenteConexao helper;
+    ArrayList<Posicao> posicoes;
     
     /**
      * Creates new form CadastroJogador
@@ -66,7 +67,7 @@ public class CadastroJogador2 extends javax.swing.JFrame {
         }
         
         //inicializa o combobox das posiçẽs disponiveis
-        ArrayList<Posicao> posicoes = new PosicaoDAO(helper).getList();
+        posicoes = new PosicaoDAO(helper).getList();
         cbPosicao.removeAllItems();
         for( Posicao p : posicoes)
         {
@@ -307,7 +308,7 @@ public class CadastroJogador2 extends javax.swing.JFrame {
                 
                 // 1
                 JogadorDAO jdao = new JogadorDAO(helper);
-                int idade = cbIdade.getSelectedIndex()+1;
+                int idade = cbIdade.getSelectedIndex()+20;
                 String nome = tfNome.getText();
                 jdao.inserir( new Jogador(nome, idade));
                 
@@ -324,20 +325,21 @@ public class CadastroJogador2 extends javax.swing.JFrame {
                         break;
                     }
                 }
-                
+
                 // 4 
                 ContratoDAO cdao = new ContratoDAO(helper);
                 cdao.inserir(
                     new Contrato(
                             j.getId(),
-                            new Date(cbEntradaAno.getSelectedIndex()+2001,
-                                    cbEntradaMes.getSelectedIndex()+1,
-                                    cbEntradaDia.getSelectedIndex()+1
+                            new Date(cbEntradaAno.getSelectedIndex()+2000,
+                                    cbEntradaMes.getSelectedIndex(),
+                                    cbEntradaDia.getSelectedIndex()
                                 ),
-                            new Date(idade, WIDTH, idade),
-                            ABORT,
-                            idade)
-                )
+                            new Date(0, 0, 0),
+                            cbCamisa.getSelectedIndex(),
+                            posicoes.get( cbPosicao.getSelectedIndex() ).getId()
+                    )
+                );
                 
             } catch (SQLException ex) {
                 Logger.getLogger(CadastroJogador2.class.getName()).log(Level.SEVERE, null, ex);

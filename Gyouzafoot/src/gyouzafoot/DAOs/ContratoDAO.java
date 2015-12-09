@@ -37,7 +37,7 @@ public class ContratoDAO {
                 "entrada,"+
                 "saida,"+
                 "camisa,"+
-                "posicao"+
+                "id_posicao"+
                 ") values ( ?,?,?,?,?)";
 
         PreparedStatement s = conexao.prepareStatement(sql);
