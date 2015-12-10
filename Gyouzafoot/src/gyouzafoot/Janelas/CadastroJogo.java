@@ -392,7 +392,7 @@ public class CadastroJogo extends javax.swing.JFrame {
             );
             
             //XGH!
-            //insere as participaoes com todos os jogadores selecionados
+            //insere as participações com todos os jogadores selecionados
             ParticipacaoDAO pdao = new ParticipacaoDAO(helper);
             for( Component j : this.jPanel3.getComponents())
             {
