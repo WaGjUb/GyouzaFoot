@@ -35,7 +35,7 @@ public class Estatisticas {
       public ArrayList<StrInt> qntdGolsFeitos() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
-    String sql = "select J.nome as 'Nome jogador', sum(P.gol_valido) as 'Quantidade de gols' from jogadores J inner join participacao P on J.id = P.id_jogador group by J.id";
+    String sql = "select J.nome as 'Nome jogador', sum(P.gol_valido) as 'Quantidade de gols' from jogadores J inner join participacao P on J.id = P.id_jogador group by J.id order by sum(P.gol_valido) desc";
         
         PreparedStatement s = conexao.prepareStatement(sql);
         ResultSet rs = s.executeQuery();
@@ -52,10 +52,10 @@ public class Estatisticas {
         return gols;
     }
       
-            public ArrayList<StrInt> qntdFaltasTomadas() throws SQLException {
+            public ArrayList<StrInt> qntdFaltasCometidas() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
-    String sql = "select J.nome as 'Nome jogador', count(F.id) as 'Quantidade de faltas' from jogadores J inner join participacao P on J.id = P.id_jogador inner join faltas_cometidas F group by J.id";
+    String sql = "select J.nome as 'Nome jogador', count(F.id) as 'Quantidade de faltas' from jogadores J inner join participacao P on J.id = P.id_jogador inner join faltas_cometidas F group by J.id order by count(F.id) desc";
    
       
         PreparedStatement s = conexao.prepareStatement(sql);
@@ -91,7 +91,58 @@ public class Estatisticas {
         return valor;
     }
             
-        public int jogoMaisPontuado() throws SQLException {
+             public int vitorias() throws SQLException {
+        Connection conexao = helper.getConnection();
+        //verificar o group by
+    String sql = "select count(J.id) as 'Vitorias' from jogo J where J.PTgyouza > J.PTadversario";
+   
+      
+        PreparedStatement s = conexao.prepareStatement(sql);
+        ResultSet rs = s.executeQuery();
+         int vitorias = 0;
+        while (rs.next()) {                   
+                    vitorias = rs.getInt("Vitorias");
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return vitorias;
+        
+             }
+                          public int empates() throws SQLException {
+        Connection conexao = helper.getConnection();
+        //verificar o group by
+    String sql = "select count(J.id) as 'Empates' from jogo J where J.PTgyouza = J.PTadversario";
+   
+      
+        PreparedStatement s = conexao.prepareStatement(sql);
+        ResultSet rs = s.executeQuery();
+         int empates = 0;
+        while (rs.next()) {                   
+                    empates = rs.getInt("Empates");
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return empates;
+             }
+                          
+        public int derrotas() throws SQLException {
+        Connection conexao = helper.getConnection();
+        //verificar o group by
+    String sql = "select count(J.id) as 'Derrotas' from jogo J where J.PTgyouza < J.PTadversario";
+   
+      
+        PreparedStatement s = conexao.prepareStatement(sql);
+        ResultSet rs = s.executeQuery();
+         int derrotas = 0;
+        while (rs.next()) {                   
+                    derrotas = rs.getInt("Derrotas");
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return derrotas;
+             }
+            
+  /*      public int jogoMaisPontuado() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
     String sql = "select count(J.id) as 'Quantidade de jogos' from jogo J";
@@ -106,7 +157,7 @@ public class Estatisticas {
 
         helper.closeAllConnections(rs, conexao, s);
         return valor;
-    }
+    }*/
             
             
             

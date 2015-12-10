@@ -45,26 +45,41 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
       
         this.helper = helper;
         
-          
-            ArrayList<StrInt> gols = new Estatisticas(helper).qntdGolsFeitos();
+        Estatisticas e = new Estatisticas(helper);
+        
+            /// exibe gols e jogadores
+            ArrayList<StrInt> gols = e.qntdGolsFeitos();
             for ( StrInt jg : gols )
             {
-                this.jPanel1.add(new JLabel(jg.s + jg.i));
+                this.jPanel1.add(new JLabel(jg.s + " - " + jg.i));
             }
             
-           JLabel lbl;
-        lbl=new JLabel("TEST");
-      
-        lbl.setOpaque(true);
-        this.jPanel1.add(lbl);
-        
-        this.jPanel1.add(new JLabel("Olardmiaosdsadjasdkasiodklasjdlkasjdaioslkdaslkd")).setVisible(true);
-        this.jPanel1.add(new JLabel("Olardmiaosdsadjasdkasiodklasjdlkasjdaioslkdaslkd")).setVisible(true);
-        this.jPanel1.add(new JLabel("Olardmiaosdsadjasdkasiodklasjdlkasjdaioslkdaslkd")).setVisible(true);
-        this.jPanel1.add(new JLabel("Olardmiaosdsadjasdkasiodklasjdlkasjdaioslkdaslkd")).setVisible(true);
-        this.jPanel1.add(new JLabel("Olardmiaosdsadjasdkasiodklasjdlkasjdaioslkdaslkd")).setVisible(true);
-        this.jPanel1.add(new JLabel("Olardmiaosdsadjasdkasiodklasjdlkasjdaioslkdaslkd")).setVisible(true);
-        
+            /// exibe faltas e jogadores
+            ArrayList<StrInt> faltas = e.qntdFaltasCometidas();
+            for ( StrInt jf : faltas )
+            {
+                this.jPanel2.add(new JLabel(jf.s + " - " + jf.i));
+            }
+            
+            //Exibe quantidade de jogos
+            int totaljogos = e.qntdJogos();
+            this.jlTotalJogos.setText(String.valueOf(totaljogos));
+            
+                        //Exibe quantidade de vitorias
+            int vitorias = 0;
+            vitorias = e.vitorias();
+            this.jlVitorias.setText(String.valueOf(vitorias));
+            
+                        //Exibe quantidade de empates
+            int empates = 0;
+            empates = e.empates();
+            this.jlEmpates.setText(String.valueOf(empates));
+            
+                        //Exibe quantidade de derrotas
+            int derrotas = 0;
+            System.out.printf("%d", e.derrotas());
+            this.jlDerrotas.setText(String.valueOf(derrotas));
+            
         
       //  jpJogadoreGols;
         
@@ -85,35 +100,150 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jlTotalJogos = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jlVitorias = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jlEmpates = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jlDerrotas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Estatisticas");
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Jogadores - Gols"));
+        jScrollPane1.setAlignmentX(0.0F);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
-        );
-
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(jPanel1);
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Jogadores - Faltas Cometidas"));
+
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane2.setViewportView(jPanel2);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Total de jogos"));
+        jPanel3.setToolTipText("");
+        jPanel3.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        jlTotalJogos.setText("322");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jlTotalJogos)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jlTotalJogos)
+                .addGap(0, 18, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Vitorias"));
+        jPanel5.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        jlVitorias.setText("322");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlVitorias)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jlVitorias)
+                .addGap(0, 18, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Empates"));
+        jPanel7.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        jlEmpates.setText("322");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlEmpates)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jlEmpates)
+                .addGap(0, 18, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Derrotas"));
+        jPanel8.setToolTipText("");
+        jPanel8.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        jlDerrotas.setText("322");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlDerrotas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jlDerrotas)
+                .addGap(0, 18, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 179, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,6 +291,19 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jlDerrotas;
+    private javax.swing.JLabel jlEmpates;
+    private javax.swing.JLabel jlTotalJogos;
+    private javax.swing.JLabel jlTotalJogos1;
+    private javax.swing.JLabel jlVitorias;
     // End of variables declaration//GEN-END:variables
 }
