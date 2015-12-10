@@ -25,12 +25,13 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     
     private int id;
     private int idJogador;
-    private java.sql.Date entrada;
-    private java.sql.Date saida;
+    private java.util.Date entrada;
+    private java.util.Date saida;
     private int camisa;
     private int idposicao;
     
-    public Contrato (int id, int idJogador, java.sql.Date entrada, java.sql.Date saida, int camisa, int idposicao) {    
+    public Contrato (int id, int idJogador, java.util.Date entrada, java.util.Date saida, int camisa, int idposicao) {    
+        
         this.id = id;
         this.idJogador = idJogador;
         this.entrada = entrada;
@@ -39,7 +40,7 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
         this.idposicao = idposicao;
     }
     
-    public Contrato (int idJogador, java.sql.Date entrada, java.sql.Date saida, int camisa, int idposicao) {    
+    public Contrato (int idJogador, java.util.Date entrada, java.util.Date saida, int camisa, int idposicao) {    
         this.idJogador = idJogador;
         this.entrada = entrada;
         this.saida = saida;
@@ -53,12 +54,12 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     }
 
     @Override
-    public java.sql.Date getEntrada() {
+    public java.util.Date getEntrada() {
         return this.entrada;
     }
 
     @Override
-    public java.sql.Date getSaida() {
+    public java.util.Date getSaida() {
         return this.saida;
     }
 

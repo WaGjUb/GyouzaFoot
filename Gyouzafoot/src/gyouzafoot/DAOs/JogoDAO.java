@@ -20,6 +20,7 @@ package gyouzafoot.DAOs;
 import java.sql.*;
 import gyouzafoot.Objetos.Jogo;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -50,7 +51,7 @@ public class JogoDAO {
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
         s.setInt(3, jogo.getPontuacaoTimeAdversario());
-        s.setDate(4, jogo.getData());
+        s.setDate(4, (Date) jogo.getData());
         
         s.executeUpdate();
         helper.closeAllConnections(conexao, s);
@@ -79,7 +80,7 @@ public class JogoDAO {
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
         s.setInt(3, jogo.getPontuacaoTimeAdversario());
-        s.setDate(4, jogo.getData());
+        s.setDate(4,new Date(jogo.getData().getTime().getTime()) );
         s.setInt(5, jogo.getId());
         s.executeQuery();
         
@@ -97,11 +98,14 @@ public class JogoDAO {
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
+        Calendar data = Calendar.getInstance();
         while (rs.next()) {
+            data.setTime( rs.getDate("data"));
             jogo = new Jogo(rs.getString("nome_adversario"),
                     rs.getInt("PTgyouza"),
                     rs.getInt("PTadversario"),
-                    rs.getDate("data")
+                    data
+                            
             );
         }
 
@@ -117,14 +121,15 @@ public class JogoDAO {
         
         PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-        
+        Calendar data = Calendar.getInstance();
         while( rs.next() )
         {
+            data.setTime(rs.getDate("data"));
             jogadors.add(
                 new Jogo(rs.getString("nome_adversario"),
                     rs.getInt("PTgyouza"),
                     rs.getInt("PTadversario"),
-                    rs.getDate("data")
+                    data
             )
             );
         }
