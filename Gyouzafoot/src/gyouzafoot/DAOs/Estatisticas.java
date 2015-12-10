@@ -17,6 +17,8 @@
  */
 package gyouzafoot.DAOs;
 import java.sql.*;
+import gyouzafoot.Objetos.StrInt;
+import java.util.ArrayList;
 /**
  *
  * @author wagjub
@@ -30,26 +32,27 @@ public class Estatisticas {
         this.helper = helper;
     }
     
-      public void qntdGolsFeitos() throws SQLException {
+      public ArrayList<StrInt> qntdGolsFeitos() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
     String sql = "select J.nome as 'Nome jogador', sum(P.gol_valido) as 'Quantidade de gols' from jogadores J inner join participacao P on J.id = P.id_jogador group by J.id";
         
         PreparedStatement s = conexao.prepareStatement(sql);
         ResultSet rs = s.executeQuery();
+        ArrayList<StrInt> gols = new ArrayList();
         while (rs.next()) {
-            //ALTERAR PARA A FORMA DE RETORNO  (STRING, INT)
-                    OBJETO = new OBJETO(
+                    gols.add(new StrInt(
                     rs.getString("Nome jogador"),
                     rs.getInt("Quantidade de gols")
-            );
+            )
+                    );
         }
 
         helper.closeAllConnections(rs, conexao, s);
-        return OBJETO;
+        return gols;
     }
       
-            public void qntdFaltasTomadas() throws SQLException {
+            public ArrayList<StrInt> qntdFaltasTomadas() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
     String sql = "select J.nome as 'Nome jogador', count(F.id) as 'Quantidade de faltas' from jogadores J inner join participacao P on J.id = P.id_jogador inner join faltas_cometidas F group by J.id";
@@ -57,16 +60,18 @@ public class Estatisticas {
       
         PreparedStatement s = conexao.prepareStatement(sql);
         ResultSet rs = s.executeQuery();
+        ArrayList<StrInt> faltas = new ArrayList();
         while (rs.next()) {
-            //ALTERAR PARA A FORMA DE RETORNO  (STRING, INT)
-                    OBJETO = new OBJETO(
+                    faltas.add(new StrInt(
                     rs.getString("Nome jogador"),
                     rs.getInt("Quantidade de faltas")
-            );
+            )
+                    );
+                    
         }
 
         helper.closeAllConnections(rs, conexao, s);
-        return OBJETO;
+        return faltas;
     }
             
             public int qntdJogos() throws SQLException {
@@ -86,7 +91,7 @@ public class Estatisticas {
         return valor;
     }
             
-        Public int jogoMaisPontuado() throws SQLException {
+        public int jogoMaisPontuado() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
     String sql = "select count(J.id) as 'Quantidade de jogos' from jogo J";
