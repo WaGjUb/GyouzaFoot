@@ -51,7 +51,7 @@ public class JogoDAO {
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
         s.setInt(3, jogo.getPontuacaoTimeAdversario());
-        s.setDate(4, (Date) jogo.getData());
+        s.setDate(4, new Date( jogo.getData().getTimeInMillis()));
         
         s.executeUpdate();
         helper.closeAllConnections(conexao, s);
