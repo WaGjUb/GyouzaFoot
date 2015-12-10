@@ -324,7 +324,7 @@ public class CadastroJogo extends javax.swing.JFrame {
     private void bntInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntInserirActionPerformed
         if (tfNome.getText().length() > 40)
         {
-             JOptionPane.showMessageDialog(this,"Nome com mais de 40 Caracteres, Jogador não criado");
+             JOptionPane.showMessageDialog(this,"Nome com mais de 40 Caracteres, Jogo não criado");
         }
         else
         {
