@@ -355,14 +355,24 @@ public class CadastroJogador extends javax.swing.JFrame {
 
                 // 4 
                 ContratoDAO cdao = new ContratoDAO(helper);
+                Calendar data = Calendar.getInstance();
+                Calendar dataNula = Calendar.getInstance();
+                
+                dataNula.set(0, 0, 0);
+                
+                int ano,mes,dia;
+                ano = Integer.parseInt( cbEntradaAno.getSelectedItem().toString());
+                mes = Integer.parseInt( cbEntradaMes.getSelectedItem().toString());
+                dia = Integer.parseInt( cbEntradaDia.getSelectedItem().toString());
+                data.set(ano, mes, dia);
+                
+               
+                
                 cdao.inserir(
                     new Contrato(
                             j.getId(),
-                            new Date(cbEntradaAno.getSelectedIndex()+2000,
-                                    cbEntradaMes.getSelectedIndex(),
-                                    cbEntradaDia.getSelectedIndex()
-                                ),
-                            new Date(0, 0, 0),
+                            data,
+                            dataNula,    
                             cbCamisa.getSelectedIndex(),
                             posicoes.get( cbPosicao.getSelectedIndex() ).getId()
                     )
