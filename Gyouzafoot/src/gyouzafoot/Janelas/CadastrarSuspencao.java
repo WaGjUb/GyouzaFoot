@@ -65,7 +65,7 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarSuspencao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        this.setVisible(true);
     }
 
     /**

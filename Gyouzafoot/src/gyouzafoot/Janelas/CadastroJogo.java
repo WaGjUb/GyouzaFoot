@@ -92,6 +92,7 @@ public class CadastroJogo extends javax.swing.JFrame {
             Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        this.setVisible(true);
     }
 
     /**
@@ -413,6 +414,7 @@ public class CadastroJogo extends javax.swing.JFrame {
             
             this.setVisible(false);
             new CadastroEventos(helper, jg.getId() );
+            this.setVisible(false);
         
         } catch (SQLException ex) {
             Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);

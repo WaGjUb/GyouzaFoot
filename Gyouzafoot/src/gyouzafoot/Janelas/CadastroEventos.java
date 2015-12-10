@@ -35,6 +35,7 @@ public class CadastroEventos extends javax.swing.JFrame {
         initComponents();
         this.helper = helper;
         this.idjogo = idjogo;
+        this.setVisible(true);        
     }
 
     /**

@@ -64,7 +64,7 @@ public class CadastrarCartaoVermelho extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarCartaoVermelho.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        this.setVisible(true);
     }
 
     /**

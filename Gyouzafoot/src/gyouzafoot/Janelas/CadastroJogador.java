@@ -92,6 +92,8 @@ public class CadastroJogador extends javax.swing.JFrame {
         {
             cbIdade.addItem(i+"");
         }
+        
+        this.setVisible(true);
     }
 
     /**

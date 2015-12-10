@@ -58,6 +58,8 @@ public class CadastroFaltasCometidas extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CadastroFaltasCometidas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        this.setVisible(true);
     }
 
     /**

@@ -61,7 +61,7 @@ public class CadastrarCartaoAmarelo extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarCartaoAmarelo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        this.setVisible(true);
     }
 
     /**
