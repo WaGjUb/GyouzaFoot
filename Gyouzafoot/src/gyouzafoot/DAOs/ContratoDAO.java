@@ -86,9 +86,11 @@ public class ContratoDAO {
 
     }
 
+    
+   // /*/*/*/*/*/*/*/*/MUDAR O WHILE E O RETORNO PARA UMA LISTA!!! 
     public Contrato buscar(int id) throws SQLException {
         Connection conexao = helper.getConnection();
-        String sql = "select * from cartao_amarelo where id = ?";
+        String sql = "select * from contrato where id = ?";
         
         Contrato contrato = null;
         PreparedStatement s = conexao.prepareStatement(sql);
@@ -99,7 +101,7 @@ public class ContratoDAO {
         Calendar dataSaida = Calendar.getInstance();
         while (rs.next()) {
             dataEntrada.setTime(rs.getDate("entrada"));
-            dataSaida.setTime(rs.getDate("entrada"));
+            dataSaida.setTime(rs.getDate("saida"));
             contrato = new Contrato(
                     rs.getInt("id"),
                     rs.getInt("id_jogador"),
