@@ -35,6 +35,7 @@ public class CadastroJogo extends javax.swing.JFrame {
     private final AssistenteConexao helper;
     /**
      * Creates new form CadastroJogo
+     * @param helper
      */
     public CadastroJogo( AssistenteConexao helper ) {
         initComponents();
@@ -340,17 +341,18 @@ public class CadastroJogo extends javax.swing.JFrame {
         ano = Integer.parseInt( (String) cbEntradaAno.getSelectedItem());
         Calendar data = Calendar.getInstance();
         data.set(ano, mes, dia);
-      //  java.sql.Date data = ; TODO pegar a data de maneira correta.... OBS: MANTER O NOME DA VARIAVEL DE "data"
+          
+        Jogo jg = new Jogo(nomeAdversario, pontuacaoTime, pontuacaoAdversario, data);
             
             
-            Jogo jg = new Jogo(nomeAdversario, pontuacaoTime, pontuacaoAdversario, data);
-            try {
-                JogoDAO jgdao;
-                jgdao = new JogoDAO(helper);
-                jgdao.inserir(jg);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+        try {
+            JogoDAO jgdao;
+            jgdao = new JogoDAO(helper);
+            jgdao.inserir(jg);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+            
           
         }
     }//GEN-LAST:event_bntInserirActionPerformed
@@ -384,6 +386,7 @@ public class CadastroJogo extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new CadastroJogo(  new AssistenteConexao() ).setVisible(true);
             } 
