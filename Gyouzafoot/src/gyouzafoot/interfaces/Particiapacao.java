@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package gyouzafoot.interfaces;
-import gyouzafoot.Objetos.Jogador;
-import gyouzafoot.Objetos.Jogo;
 /**
  *
  * @author hydrocat

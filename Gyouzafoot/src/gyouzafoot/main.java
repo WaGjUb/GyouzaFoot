@@ -19,14 +19,14 @@ public class main {
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        
+     /*   
         AssistenteConexao ac = new AssistenteConexao();
         ac.getConnection();
         
         Jogador j = new Jogador("Rouney", 15);
         JogadorDAO jd;
         jd = new JogadorDAO(ac);
-        jd.remover(j);
+        jd.remover(j);*/
                 
                 
                 }

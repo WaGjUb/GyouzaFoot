@@ -39,7 +39,7 @@ public class JogoDAO {
     
     public boolean inserir(Jogo jogo) throws SQLException {
         Connection conexao = helper.getConnection();
-        String sql = "insert into Jogo (" +
+        String sql = "insert into jogo (" +
                 "nome_adversario,"+
                 "PTgyouza,"+
                 "PTadversario,"+
@@ -61,7 +61,7 @@ public class JogoDAO {
 
     public boolean remover(Jogo jogo) throws SQLException {
         Connection conexao = helper.getConnection();
-        String sql = "delete from Jogo where id = ?";
+        String sql = "delete from jogo where id = ?";
 
         PreparedStatement s = conexao.prepareStatement(sql);
         s.setInt(1, jogo.getId());
@@ -74,7 +74,7 @@ public class JogoDAO {
 
     public boolean alterar(Jogo jogo) throws SQLException {
         Connection conexao = helper.getConnection();
-        String sql = "update Jogo set nome_adversario=? PTgyouza=? PTadversario=? data=? where id = ?";
+        String sql = "update jogo set nome_adversario=? PTgyouza=? PTadversario=? data=? where id = ?";
         PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setString(1, jogo.getNomeAdversario());
@@ -91,7 +91,7 @@ public class JogoDAO {
 
     public Jogo buscar(int id) throws SQLException {
         Connection conexao = helper.getConnection();
-        String sql = "select * from Jogo where id = ?";
+        String sql = "select * from jogo where id = ?";
         
         Jogo jogo = null;
         PreparedStatement s = conexao.prepareStatement(sql);
@@ -117,7 +117,7 @@ public class JogoDAO {
     {
         Connection conexao = helper.getConnection();
         ArrayList<Jogo> jogadors = new ArrayList<>();
-        String sql = "select * from Jogo";
+        String sql = "select * from jogo";
         
         PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
