@@ -139,7 +139,7 @@ public class CadastroJogo extends javax.swing.JFrame {
             }
         });
 
-        bntInserir.setText("Inserir");
+        bntInserir.setText("Próximo");
         bntInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntInserirActionPerformed(evt);
@@ -408,10 +408,15 @@ public class CadastroJogo extends javax.swing.JFrame {
                     pdao.inserir(p);
                 }
             }
+            
+            
+            
+            this.setVisible(false);
+            new CadastroEventos(helper, jg.getId() );
+        
         } catch (SQLException ex) {
             Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        
         
         }
     }//GEN-LAST:event_bntInserirActionPerformed

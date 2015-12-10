@@ -114,5 +114,27 @@ public class JogadorDAO {
         return jogadors;
     }
 
-    
+    public ArrayList<Jogador> getListDoJogo(int id_jogo) throws SQLException
+    {
+        Connection conexao = helper.getConnection();
+        ArrayList<Jogador> jogadors = new ArrayList<>();
+        String sql = "select * from jogadores where exists( "
+                + " select id_jogo from participacao where "
+                + " jogadores.id = participacao.id_jogador and "
+                + " id_jogo = ? ) ";
+        
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ps.setInt(1, id_jogo);
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            jogadors.add(
+                new Jogador(rs.getInt("id"),rs.getString("nome"),rs.getInt("idade"))
+            );
+        }
+        
+        helper.closeAllConnections(rs, conexao, ps);
+        return jogadors;
+    }
 }
