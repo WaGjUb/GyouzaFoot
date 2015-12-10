@@ -100,7 +100,9 @@ public class JogoDAO {
         Calendar data = Calendar.getInstance();
         while (rs.next()) {
             data.setTime( rs.getDate("data"));
-            jogo = new Jogo(rs.getString("nome_adversario"),
+            jogo = new Jogo(
+                    id,
+                    rs.getString("nome_adversario"),
                     rs.getInt("PTgyouza"),
                     rs.getInt("PTadversario"),
                     data
@@ -109,6 +111,42 @@ public class JogoDAO {
         }
 
         helper.closeAllConnections(rs, conexao, s);
+        return jogo;
+    }
+    
+    public Jogo buscar( String nomeAdversario, int PTgyouza, int PTAdversario, Calendar data) throws SQLException
+    {
+        Connection conexao = helper.getConnection();
+        String sql = "select * from jogo where "
+                + "nome_adversario = ? and "
+                + " PTgyouza = ? and "
+                + " PTadversario = ? and "
+                + " data = ?";
+        
+        Jogo jogo = null;
+        PreparedStatement s = conexao.prepareStatement(sql);
+        
+        s.setString(1, nomeAdversario);
+        s.setInt(2, PTgyouza);
+        s.setInt(3, PTAdversario);
+        s.setDate(4, new Date( data.getTime().getTime()));
+        
+        ResultSet rs = s.executeQuery();
+
+        Calendar dataa = Calendar.getInstance();
+        while (rs.next()) {
+            dataa.setTime( rs.getDate("data"));
+            jogo = new Jogo(
+                    rs.getInt("id"),
+                    rs.getString("nome_adversario"),
+                    rs.getInt("PTgyouza"),
+                    rs.getInt("PTadversario"),
+                    dataa
+                            
+            );
+        
+        }
+        helper.closeAllConnections(rs,conexao, s);
         return jogo;
     }
     

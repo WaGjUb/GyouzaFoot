@@ -17,25 +17,42 @@
  */
 package gyouzafoot.Paineis;
 
+import gyouzafoot.Objetos.Jogador;
+
 /**
  *
  * @author hydrocat
  */
-public class Jogador extends javax.swing.JPanel {
-
+public class PainelJogador extends javax.swing.JPanel {
+    private Jogador j= new Jogador(-1, "JogadorSemNome", -1);
     /**
      * Creates new form Jogador
      */
-    public Jogador(String nome) {
-        this.jCheckBox1.setText(nome);
+    public PainelJogador(Jogador j) {        
         initComponents();
+        this.j = j;
+        this.jCheckBox1.setText(j.getNome());
     }
     
     public boolean isSelected()
     {
         return this.jCheckBox1.isSelected();
     }
-
+    
+    public Jogador getJogador()
+    {
+        return this.j;
+    }
+    
+    public int getGolValido()
+    {
+        return Integer.parseInt((String)this.jComboBox1.getSelectedItem());
+    }
+    
+    public int getGolContra()
+    {
+        return Integer.parseInt((String)this.jComboBox2.getSelectedItem());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,13 +63,25 @@ public class Jogador extends javax.swing.JPanel {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
         add(jCheckBox1);
+
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 204));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        add(jComboBox1);
+
+        jComboBox2.setForeground(new java.awt.Color(255, 0, 0));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        add(jComboBox2);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration//GEN-END:variables
 }

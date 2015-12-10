@@ -41,7 +41,7 @@ public class ParticipacaoDAO {
                 "id_jogo,"+
                 "gol_contra,"+
                 "gol_valido"+
-                "values( ?,?,?,? )";
+                " ) values( ?,?,?,? )";
 
         PreparedStatement s = conexao.prepareStatement(sql);
         
@@ -110,6 +110,34 @@ public class ParticipacaoDAO {
         return participacao;
     }
     
+    public Participacao buscar(int id_jogador, int id_jogo) throws SQLException {
+        Connection conexao = helper.getConnection();
+        String sql = "select * from participacao where"
+                + " id_jogador = ? and "
+                + " id_jogo = ?";
+        
+        Participacao participacao = null;
+        PreparedStatement s = conexao.prepareStatement(sql);
+        
+        s.setInt(1, id_jogador);
+        s.setInt(2, id_jogo);
+        
+        ResultSet rs = s.executeQuery();
+
+        while (rs.next()) {
+            participacao = new Participacao(
+                    rs.getInt("id"),
+                    rs.getInt("id_jogador"),
+                    rs.getInt("id_jogo"),
+                    rs.getInt("gol_contra"),
+                    rs.getInt("gol_valido")
+            );
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return participacao;
+    }
+    
     public ArrayList<Participacao> getList() throws SQLException
     {
         Connection conexao = helper.getConnection();
@@ -117,6 +145,60 @@ public class ParticipacaoDAO {
         String sql = "select * from participacao";
         
         PreparedStatement ps = conexao.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            participacoes.add(
+            new Participacao(
+                    rs.getInt("id"),
+                    rs.getInt("id_jogador"),
+                    rs.getInt("id_jogo"),
+                    rs.getInt("gol_contra"),
+                    rs.getInt("gol_valido")
+            )
+            );
+        }
+        
+        helper.closeAllConnections(rs, conexao, ps);
+        return participacoes;
+    }
+    
+    public ArrayList<Participacao> getListPorJogo(int id_jogo) throws SQLException
+    {
+        Connection conexao = helper.getConnection();
+        ArrayList<Participacao> participacoes = new ArrayList<>();
+        String sql = "select * from participacao where id_jogo = ?";
+        
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ps.setInt(1, id_jogo);
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            participacoes.add(
+            new Participacao(
+                    rs.getInt("id"),
+                    rs.getInt("id_jogador"),
+                    rs.getInt("id_jogo"),
+                    rs.getInt("gol_contra"),
+                    rs.getInt("gol_valido")
+            )
+            );
+        }
+        
+        helper.closeAllConnections(rs, conexao, ps);
+        return participacoes;
+    }
+    
+    public ArrayList<Participacao> getListPorJogador(int id_jogador) throws SQLException
+    {
+        Connection conexao = helper.getConnection();
+        ArrayList<Participacao> participacoes = new ArrayList<>();
+        String sql = "select * from participacao where id_jogador = ?";
+        
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ps.setInt(1, id_jogador);
         ResultSet rs = ps.executeQuery();
         
         while( rs.next() )
