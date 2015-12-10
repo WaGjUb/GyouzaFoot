@@ -35,7 +35,7 @@ public class CartaoDAO {
         this.helper = new AssistenteConexao();
     }
 
-    public boolean inserir(Cartao cartao) throws SQLException {
+    public boolean inserirCartãoAmarelo(Cartao cartao) throws SQLException {
         Connection conexao = helper.getConnection();
         String sql = "insert into cartao_amarelo (id_participacao) values (?)";
 
@@ -48,7 +48,7 @@ public class CartaoDAO {
 
     }
 
-    public boolean remover(Cartao cartao) throws SQLException {
+    public boolean removerCartãoAmarelo(Cartao cartao) throws SQLException {
         Connection conexao = helper.getConnection();
         String sql = "delete from cartao_amarelo where id = ?";
 
@@ -61,7 +61,7 @@ public class CartaoDAO {
 
     }
 
-    public boolean alterar(Cartao cartao) throws SQLException {
+    public boolean alterarCartãoAmarelo(Cartao cartao) throws SQLException {
         Connection conexao = helper.getConnection();
         String sql = "update cartao_amarelo set id_participacao = ? where id = ?";
 
@@ -75,7 +75,7 @@ public class CartaoDAO {
 
     }
 
-    public Cartao buscar(int id) throws SQLException {
+    public Cartao buscarCartãoAmarelo(int id) throws SQLException {
         Connection conexao = helper.getConnection();
         String sql = "select * from cartao_amarelo where id = ?";
         
@@ -92,12 +92,88 @@ public class CartaoDAO {
         return cartao;
     }
     
-    public ArrayList<Cartao> getList() throws SQLException
-    {
+    public ArrayList<Cartao> getListCartãoAmarelo() throws SQLException{
         Connection conexao = helper.getConnection();
         Cartao cartao = null;
         ArrayList<Cartao> cartoes = new ArrayList<Cartao>();
         String sql = "select * from cartao_amarelo";
+        
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        while( rs.next() )
+        {
+            cartoes.add(
+                new Cartao( rs.getInt("id"), rs.getInt("id_participacao"))
+            );
+        }
+        
+        helper.closeAllConnections(rs, conexao, ps);
+        return cartoes;
+    }
+    
+    public boolean inserirCartãoVermelho(Cartao cartao) throws SQLException {
+        Connection conexao = helper.getConnection();
+        String sql = "insert into cartao_vermelho (id_participacao) values (?)";
+
+        PreparedStatement s = conexao.prepareStatement(sql);
+        s.setInt(1, cartao.getIdParticipacao());
+        s.executeUpdate();
+
+        helper.closeAllConnections(conexao, s);
+        return true;
+
+    }
+
+    public boolean removerCartãoVermelho(Cartao cartao) throws SQLException {
+        Connection conexao = helper.getConnection();
+        String sql = "delete from cartao_vermelho where id = ?";
+
+        PreparedStatement s = conexao.prepareStatement(sql);
+        s.setInt(1, cartao.getId());
+        s.executeQuery();
+
+        helper.closeAllConnections(conexao, s);
+        return true;
+
+    }
+
+    public boolean alterarCartãoVermelho(Cartao cartao) throws SQLException {
+        Connection conexao = helper.getConnection();
+        String sql = "update cartao_vermelho set id_participacao = ? where id = ?";
+
+        PreparedStatement s = conexao.prepareStatement(sql);
+        s.setInt(1, cartao.getIdParticipacao());
+        s.setInt(2, cartao.getId());
+        s.executeQuery();
+        
+        helper.closeAllConnections(conexao, s);
+        return true;
+
+    }
+
+    public Cartao buscarCartãoVermelho(int id) throws SQLException {
+        Connection conexao = helper.getConnection();
+        String sql = "select * from cartao_vermelho where id = ?";
+        
+        Cartao cartao = null;
+        PreparedStatement s = conexao.prepareStatement(sql);
+        s.setInt(1, id);
+        ResultSet rs = s.executeQuery();
+
+        while (rs.next()) {
+            cartao = new Cartao( rs.getInt("id"), rs.getInt("id_participacao"));
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return cartao;
+    }
+    
+    public ArrayList<Cartao> getListCartãoVermelho() throws SQLException{
+        Connection conexao = helper.getConnection();
+        Cartao cartao = null;
+        ArrayList<Cartao> cartoes = new ArrayList<Cartao>();
+        String sql = "select * from cartao_vermelho";
         
         PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
