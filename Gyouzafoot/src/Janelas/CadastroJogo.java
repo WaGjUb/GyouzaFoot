@@ -21,6 +21,7 @@ import gyouzafoot.DAOs.AssistenteConexao;
 import gyouzafoot.DAOs.JogoDAO;
 import gyouzafoot.Objetos.Jogo;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -332,19 +333,24 @@ public class CadastroJogo extends javax.swing.JFrame {
         String nomeAdversario = tfNome.getText();
         int pontuacaoTime = cbEntradaCasa.getSelectedIndex();
         int pontuacaoAdversario = cbEntradaAdversario.getSelectedIndex();
+        
+        int dia, mes, ano;
+        dia = Integer.parseInt( (String) cbEntradaDia.getSelectedItem());
+        mes = Integer.parseInt( (String) cbEntradaMes.getSelectedItem());
+        ano = Integer.parseInt( (String) cbEntradaAno.getSelectedItem());
+        Calendar data = Calendar.getInstance();
+        data.set(ano, mes, dia);
       //  java.sql.Date data = ; TODO pegar a data de maneira correta.... OBS: MANTER O NOME DA VARIAVEL DE "data"
             
             
             Jogo jg = new Jogo(nomeAdversario, pontuacaoTime, pontuacaoAdversario, data);
-       
             try {
                 JogoDAO jgdao;
                 jgdao = new JogoDAO(helper);
                 jgdao.inserir(jg);
             } catch (SQLException ex) {
                 Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            } 
           
         }
     }//GEN-LAST:event_bntInserirActionPerformed
@@ -379,8 +385,8 @@ public class CadastroJogo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroJogo().setVisible(true);
-            }
+                new CadastroJogo(  new AssistenteConexao() ).setVisible(true);
+            } 
         });
     }
 

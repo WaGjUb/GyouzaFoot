@@ -25,8 +25,8 @@ package gyouzafoot.Objetos;
 public class Jogador implements gyouzafoot.interfaces.Jogador{
 
     private int id;
-    private String nome;
-    private int idade;
+    private final String nome;
+    private final int idade;
     
     public Jogador(int id, String nome, int idade)
     {    

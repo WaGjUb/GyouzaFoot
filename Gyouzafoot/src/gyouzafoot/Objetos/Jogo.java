@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package gyouzafoot.Objetos;
-import java.sql.Date;
+import java.util.Calendar;
 /**
  *
  * @author hydrocat
@@ -24,12 +24,12 @@ import java.sql.Date;
 public class Jogo implements gyouzafoot.interfaces.Jogo{
 
     private int id;
-    private String nomeAdversario;
-    private int pontuacaoTime;
-    private int pontuacaoAdversario;
-    private java.sql.Date data;
+    private final String nomeAdversario;
+    private final int pontuacaoTime;
+    private final int pontuacaoAdversario;
+    private Calendar data;
     
-    public Jogo(int id, String nomeAdversario, int pontuacaoTime, int pontuacaoAdversario, java.sql.Date data)
+    public Jogo(int id, String nomeAdversario, int pontuacaoTime, int pontuacaoAdversario, Calendar data)
     {
         this.id = id;
         this.nomeAdversario = nomeAdversario;
@@ -38,7 +38,7 @@ public class Jogo implements gyouzafoot.interfaces.Jogo{
         this.data = data;
     }
     
-    public Jogo(String nomeAdversario, int pontuacaoTime, int pontuacaoAdversario, java.sql.Date data)
+    public Jogo(String nomeAdversario, int pontuacaoTime, int pontuacaoAdversario, Calendar data)
     {
         this.nomeAdversario = nomeAdversario;
         this.pontuacaoTime = pontuacaoTime;
@@ -67,7 +67,7 @@ public class Jogo implements gyouzafoot.interfaces.Jogo{
     }
 
     @Override
-    public Date getData() {
+    public Calendar getData() {
         return this.data;
     }
 }

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package gyouzafoot.interfaces;
+
+import java.util.Calendar;
+
 /**
  *
  * @author hydrocat
@@ -13,8 +16,8 @@ public interface Contrato {
     Métodos gerais para o acesso aos objetos
     */
     public int getIdJogador();
-    public java.sql.Date getEntrada();
-    public java.sql.Date getSaida();
+    public Calendar getEntrada();
+    public Calendar getSaida();
     public int getCamiseta();
     public int getIdPosicao();
     public int getId(); 

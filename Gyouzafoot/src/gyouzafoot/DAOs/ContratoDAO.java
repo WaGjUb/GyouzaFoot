@@ -123,10 +123,22 @@ public class ContratoDAO {
         PreparedStatement ps = conexao.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         
+        Calendar dataEntrada = Calendar.getInstance();
+        Calendar dataSaida = Calendar.getInstance();
         while( rs.next() )
         {
+            dataEntrada.setTime( rs.getDate("entrada"));
+            dataSaida.setTime( rs.getDate("saida"));
+            
             contratos.add(
-            new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"))
+            new Contrato(
+                    rs.getInt("id"),
+                    rs.getInt("id_jogador"),
+                    dataEntrada,
+                    dataSaida,
+                    rs.getInt("camisa"), 
+                    rs.getInt("id_posicao")
+                )
             );
         }
         

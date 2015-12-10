@@ -17,6 +17,8 @@
  */
 package gyouzafoot.Objetos;
 
+import java.util.Calendar;
+
 /**
  *
  * @author hydrocat
@@ -25,12 +27,12 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     
     private int id;
     private int idJogador;
-    private java.util.Date entrada;
-    private java.util.Date saida;
+    private Calendar entrada;
+    private Calendar saida;
     private int camisa;
     private int idposicao;
     
-    public Contrato (int id, int idJogador, java.util.Date entrada, java.util.Date saida, int camisa, int idposicao) {    
+    public Contrato (int id, int idJogador, Calendar entrada, Calendar saida, int camisa, int idposicao) {    
         
         this.id = id;
         this.idJogador = idJogador;
@@ -40,7 +42,7 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
         this.idposicao = idposicao;
     }
     
-    public Contrato (int idJogador, java.util.Date entrada, java.util.Date saida, int camisa, int idposicao) {    
+    public Contrato (int idJogador, Calendar entrada, Calendar saida, int camisa, int idposicao) {    
         this.idJogador = idJogador;
         this.entrada = entrada;
         this.saida = saida;
@@ -54,12 +56,12 @@ public class Contrato implements gyouzafoot.interfaces.Contrato {
     }
 
     @Override
-    public java.util.Date getEntrada() {
+    public Calendar getEntrada() {
         return this.entrada;
     }
 
     @Override
-    public java.util.Date getSaida() {
+    public Calendar getSaida() {
         return this.saida;
     }
 

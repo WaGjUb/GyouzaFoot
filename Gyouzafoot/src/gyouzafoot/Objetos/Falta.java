@@ -24,8 +24,8 @@ package gyouzafoot.Objetos;
 public class Falta implements gyouzafoot.interfaces.Falta{
 
     private int id;
-    private int idParticipacao;
-    private int gravidade;
+    private final int idParticipacao;
+    private final int gravidade;
     
     
     public Falta(int id, int idParticipacao, int gravidade)
