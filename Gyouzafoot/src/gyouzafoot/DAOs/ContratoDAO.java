@@ -87,7 +87,6 @@ public class ContratoDAO {
     }
 
     
-   // /*/*/*/*/*/*/*/*/MUDAR O WHILE E O RETORNO PARA UMA LISTA!!! 
     public Contrato buscar(int id) throws SQLException {
         Connection conexao = helper.getConnection();
         String sql = "select * from contrato where id = ?";

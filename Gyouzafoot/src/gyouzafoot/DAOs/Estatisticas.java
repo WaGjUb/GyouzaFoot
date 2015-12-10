@@ -69,7 +69,7 @@ public class Estatisticas {
         return OBJETO;
     }
             
-            public int qntdTotalJogos() throws SQLException {
+            public int qntdJogos() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
     String sql = "select count(J.id) as 'Quantidade de jogos' from jogo J";
@@ -85,6 +85,25 @@ public class Estatisticas {
         helper.closeAllConnections(rs, conexao, s);
         return valor;
     }
+            
+        Public int jogoMaisPontuado() throws SQLException {
+        Connection conexao = helper.getConnection();
+        //verificar o group by
+    String sql = "select count(J.id) as 'Quantidade de jogos' from jogo J";
+   
+      
+        PreparedStatement s = conexao.prepareStatement(sql);
+        ResultSet rs = s.executeQuery();
+         int valor = 0;
+        while (rs.next()) {                   
+                    valor = rs.getInt("Quantidade de jogos");
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return valor;
+    }
+            
+            
             
             
 }
