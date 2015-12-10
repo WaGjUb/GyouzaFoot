@@ -388,8 +388,13 @@ public class CadastroJogo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+<<<<<<< HEAD
+                new CadastroJogo( new AssistenteConexao() ).setVisible(true);
+            }
+=======
                 new CadastroJogo(  new AssistenteConexao() ).setVisible(true);
             } 
+>>>>>>> d1d58017f748248da102689246e7e82d80e983f5
         });
     }
 
