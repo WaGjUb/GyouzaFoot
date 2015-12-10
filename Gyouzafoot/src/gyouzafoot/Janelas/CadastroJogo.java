@@ -332,8 +332,8 @@ public class CadastroJogo extends javax.swing.JFrame {
         {
             
         String nomeAdversario = tfNome.getText();
-        int pontuacaoTime = cbEntradaCasa.getSelectedIndex();
-        int pontuacaoAdversario = cbEntradaAdversario.getSelectedIndex();
+        int pontuacaoTime = Integer.parseInt( (String)cbEntradaCasa.getSelectedItem());
+        int pontuacaoAdversario = Integer.parseInt( (String) cbEntradaAdversario.getSelectedItem());
         
         int dia, mes, ano;
         dia = Integer.parseInt( (String) cbEntradaDia.getSelectedItem());
