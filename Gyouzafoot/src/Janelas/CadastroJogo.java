@@ -379,7 +379,7 @@ public class CadastroJogo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroJogo().setVisible(true);
+                new CadastroJogo( new AssistenteConexao() ).setVisible(true);
             }
         });
     }
