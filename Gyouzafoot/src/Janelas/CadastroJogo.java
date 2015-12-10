@@ -20,6 +20,9 @@ package Janelas;
 import gyouzafoot.DAOs.AssistenteConexao;
 import gyouzafoot.DAOs.JogoDAO;
 import gyouzafoot.Objetos.Jogo;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -329,10 +332,20 @@ public class CadastroJogo extends javax.swing.JFrame {
         String nomeAdversario = tfNome.getText();
         int pontuacaoTime = cbEntradaCasa.getSelectedIndex();
         int pontuacaoAdversario = cbEntradaAdversario.getSelectedIndex();
-      //  java.sql.Date data = ;
+      //  java.sql.Date data = ; TODO pegar a data de maneira correta.... OBS: MANTER O NOME DA VARIAVEL DE "data"
             
-            Jogo jg = new Jogo();
-            JogoDAO jgdao = new JogoDAO();
+            
+            Jogo jg = new Jogo(nomeAdversario, pontuacaoTime, pontuacaoAdversario, data);
+       
+            try {
+                JogoDAO jgdao;
+                jgdao = new JogoDAO(helper);
+                jgdao.inserir(jg);
+            } catch (SQLException ex) {
+                Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+          
         }
     }//GEN-LAST:event_bntInserirActionPerformed
 
