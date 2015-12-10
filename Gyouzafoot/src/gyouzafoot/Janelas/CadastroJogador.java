@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package Janelas;
+package gyouzafoot.Janelas;
 
 import gyouzafoot.DAOs.AssistenteConexao;
 import gyouzafoot.DAOs.ContratoDAO;
@@ -106,17 +106,17 @@ public class CadastroJogador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        cbEntradaDia = new javax.swing.JComboBox<String>();
+        cbEntradaDia = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        cbEntradaMes = new javax.swing.JComboBox<String>();
+        cbEntradaMes = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        cbEntradaAno = new javax.swing.JComboBox<String>();
+        cbEntradaAno = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        cbCamisa = new javax.swing.JComboBox<String>();
+        cbCamisa = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        cbPosicao = new javax.swing.JComboBox<String>();
+        cbPosicao = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        cbIdade = new javax.swing.JComboBox<String>();
+        cbIdade = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -131,7 +131,7 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jLabel4.setText("Dia");
 
-        cbEntradaDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEntradaDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbEntradaDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEntradaDiaActionPerformed(evt);
@@ -140,7 +140,7 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jLabel5.setText("Mes");
 
-        cbEntradaMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEntradaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbEntradaMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEntradaMesActionPerformed(evt);
@@ -149,7 +149,7 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jLabel6.setText("Ano");
 
-        cbEntradaAno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEntradaAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbEntradaAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEntradaAnoActionPerformed(evt);
@@ -189,11 +189,11 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jLabel7.setText("Camisa");
 
-        cbCamisa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCamisa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setText("Posição");
 
-        cbPosicao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbPosicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,7 +228,7 @@ public class CadastroJogador extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações Pessoais"));
 
-        cbIdade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbIdade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Idade");
 
