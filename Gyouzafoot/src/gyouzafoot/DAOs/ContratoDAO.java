@@ -19,6 +19,7 @@ package gyouzafoot.DAOs;
 import java.sql.*;
 import gyouzafoot.Objetos.Contrato;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ContratoDAO {
     
@@ -43,8 +44,8 @@ public class ContratoDAO {
         PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, contrato.getIdJogador());
-        s.setDate(2, contrato.getEntrada());
-        s.setDate(3, contrato.getSaida());
+        s.setDate(2, new Date( contrato.getEntrada().getTime().getTime() ));
+        s.setDate(3, new Date( contrato.getSaida().getTime().getTime() ));
         s.setInt(4, contrato.getCamiseta());
         s.setInt(5, contrato.getIdPosicao());
         
@@ -74,8 +75,8 @@ public class ContratoDAO {
         PreparedStatement s = conexao.prepareStatement(sql);
         
         s.setInt(1, contrato.getIdJogador());
-        s.setDate(2, contrato.getEntrada());
-        s.setDate(3, contrato.getSaida());
+        s.setDate(2, new Date( contrato.getEntrada().getTime().getTime()));
+        s.setDate(3, new Date( contrato.getSaida().getTime().getTime()));
         s.setInt(4, contrato.getCamiseta());
         s.setInt(5, contrato.getId());
         s.executeQuery();
@@ -94,8 +95,19 @@ public class ContratoDAO {
         s.setInt(1, id);
         ResultSet rs = s.executeQuery();
 
+        Calendar dataEntrada = Calendar.getInstance();
+        Calendar dataSaida = Calendar.getInstance();
         while (rs.next()) {
-            contrato = new Contrato(rs.getInt("id"),rs.getInt("id_jogador"),rs.getDate("entrada"), rs.getDate("saida"),rs.getInt("camisa"), rs.getInt("id_posicao"));
+            dataEntrada.setTime(rs.getDate("entrada"));
+            dataSaida.setTime(rs.getDate("entrada"));
+            contrato = new Contrato(
+                    rs.getInt("id"),
+                    rs.getInt("id_jogador"),
+                    dataEntrada,
+                    dataSaida,
+                    rs.getInt("camisa"), 
+                    rs.getInt("id_posicao")
+            );
         }
 
         helper.closeAllConnections(rs, conexao, s);
