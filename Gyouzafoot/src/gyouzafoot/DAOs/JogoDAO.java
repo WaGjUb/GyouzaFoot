@@ -47,7 +47,6 @@ public class JogoDAO {
                 "values( ?,?,?,? )";
 
         PreparedStatement s = conexao.prepareStatement(sql);
-        System.out.println("NomeAdversario "+jogo.getNomeAdversario());
         s.setString(1, jogo.getNomeAdversario());
         s.setInt(2, jogo.getPontuacaoTime());
         s.setInt(3, jogo.getPontuacaoTimeAdversario());
