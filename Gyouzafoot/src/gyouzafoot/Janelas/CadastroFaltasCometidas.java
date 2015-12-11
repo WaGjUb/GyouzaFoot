@@ -36,23 +36,27 @@ import java.util.logging.Logger;
  */
 public class CadastroFaltasCometidas extends javax.swing.JFrame {
     private AssistenteConexao helper;
-    private ArrayList<Jogador> jogadores;
     private int idJogo;
+    private ArrayList<Jogador> jogadores;
    
     
     /**
      * Creates new form CadastroFaltas
      */
-    public CadastroFaltasCometidas( AssistenteConexao helper, ArrayList<Jogador> jogadores, int idJogo) {
-        initComponents();
-        this.helper = helper;
-        this.jogadores = jogadores;
-        this.idJogo = idJogo;
-        
-        this.cbNome.removeAllItems();
-        for( Jogador j : jogadores )
-        {
-            cbNome.addItem( j.getNome() );
+    public CadastroFaltasCometidas( AssistenteConexao helper, int idJogo) {
+        try {
+            initComponents();
+            this.helper = helper;
+            this.idJogo = idJogo;
+            this.jogadores = new JogadorDAO(helper).getListDoJogo(idJogo);
+            
+            this.cbNome.removeAllItems();
+            for( Jogador j : jogadores )
+            {
+                cbNome.addItem( j.getNome() );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroFaltasCometidas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -75,7 +79,7 @@ public class CadastroFaltasCometidas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nome");
+        jLabel1.setText("Jogador");
 
         cbNome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -217,13 +221,13 @@ public class CadastroFaltasCometidas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try 
+     //           try 
                 {
                     AssistenteConexao helper = new AssistenteConexao();
-                    new CadastroFaltasTomadas( helper, new JogadorDAO(helper).getList(), 1).setVisible(true);
+//                    new CadastroFaltasTomadas( helper, new JogadorDAO(helper).getList(), 1).setVisible(true);
                     
-                } catch (SQLException ex) {
-                    Logger.getLogger(CadastroFaltasTomadas.class.getName()).log(Level.SEVERE, null, ex);
+  //              } catch (SQLException ex) {
+       //             Logger.getLogger(CadastroFaltasTomadas.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
