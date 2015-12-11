@@ -45,7 +45,7 @@ public class CadastroJogo extends javax.swing.JFrame {
      * Creates new form CadastroJogo
      * @param helper
      */
-    public CadastroJogo( AssistenteConexao helper ) {
+    public CadastroJogo( AssistenteConexao helper ) throws SQLException {
         initComponents();
         
         this.helper = helper;
@@ -80,17 +80,12 @@ public class CadastroJogo extends javax.swing.JFrame {
             cbEntradaCasa.addItem(i+"");
             cbEntradaAdversario.addItem(i+"");
         }
-       
-        try {
+
             ArrayList<Jogador> jogadores = new JogadorDAO(helper).getList();
             for ( Jogador j : jogadores )
             {
                 this.jPanel3.add( new PainelJogador(j));
             }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         this.setVisible(true);
     }
@@ -414,6 +409,7 @@ public class CadastroJogo extends javax.swing.JFrame {
             
             this.setVisible(false);
             new CadastroEventos(helper, jg.getId() );
+            System.out.println(jg.getId()+"");
             this.setVisible(false);
         
         } catch (SQLException ex) {
@@ -454,7 +450,11 @@ public class CadastroJogo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new CadastroJogo( new AssistenteConexao() ).setVisible(true);
+                try {
+                    new CadastroJogo( new AssistenteConexao() ).setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CadastroJogo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -31,10 +31,11 @@ public class CadastroEventos extends javax.swing.JFrame {
     /**
      * Creates new form CadastroEventos
      */
-    public CadastroEventos(AssistenteConexao helper, int idJogo) {
+    public CadastroEventos(AssistenteConexao helper, int idjogo) {
         initComponents();
         this.helper = helper;
         this.idjogo = idjogo;
+        System.out.println(idjogo+" Isto está no Cadastro de Eventos");
         this.setVisible(true);        
     }
 
@@ -138,23 +139,23 @@ public class CadastroEventos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new CadastroFaltasCometidas(helper, idjogo).setVisible(true);
+        new CadastroFaltasCometidas(helper, idjogo);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new CadastroFaltasTomadas(helper, idjogo).setVisible(true);
+        new CadastroFaltasTomadas(helper, idjogo);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new CadastrarCartaoAmarelo(helper, idjogo).setVisible(true);
+        new CadastrarCartaoAmarelo(helper, idjogo);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new CadastrarCartaoVermelho(helper, idjogo).setVisible(true);
+        new CadastrarCartaoVermelho(helper, idjogo);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new CadastrarSuspencao(helper, idjogo).setVisible(true);
+        new CadastrarSuspencao(helper, idjogo);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

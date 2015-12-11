@@ -129,6 +129,7 @@ public class JogadorDAO {
         
         while( rs.next() )
         {
+            System.out.println(new Jogador(rs.getInt("id"),rs.getString("nome"),rs.getInt("idade")).toString()+" Isto está no jogadorDAO");
             jogadors.add(
                 new Jogador(rs.getInt("id"),rs.getString("nome"),rs.getInt("idade"))
             );

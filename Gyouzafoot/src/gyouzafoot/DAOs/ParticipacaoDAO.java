@@ -47,8 +47,8 @@ public class ParticipacaoDAO {
         
         s.setInt(1, participacao.getIdJogador());
         s.setInt(2, participacao.getIdJogo());
-        s.setInt(3, participacao.getQuantidadeGols());
-        s.setInt(4, participacao.getQuantidadeGolsContra());
+        s.setInt(3, participacao.getQuantidadeGolsContra());
+        s.setInt(4, participacao.getQuantidadeGols());
         
         s.executeUpdate();
 

@@ -31,10 +31,10 @@ public class SuspensaoDAO {
     }
      public boolean inserir(Suspensao suspensao) throws SQLException {
          Connection conexao = helper.getConnection();
-        String sql = "insert into suspensao (" +
-                "id_participacao,"+
-                "qtde_jogos,"+
-                "values( ?,? )";
+        String sql = "insert into suspensao ( " +
+                " id_participacao, "+
+                " qtde_jogos ) "+
+                " values( ?,? )";
 
         PreparedStatement s = conexao.prepareStatement(sql);
         

@@ -21,31 +21,34 @@ package gyouzafoot.Paineis;
  *
  * @author hydrocat
  */
-public class PainelCheckBoxCombo extends javax.swing.JPanel {
-    String nome;
-    int id;
+public class PainelCheckBoxComboMix extends javax.swing.JPanel {
+    String texto;
+    int numero;
     /**
-     * Creates new form PainelCheckBoxCombo
+     * Creates new form PainelComboBoxInt
      */
-    public PainelCheckBoxCombo(String nome, int id) {
+    public PainelCheckBoxComboMix(String texto, int numero) {
         initComponents();
-        this.nome = nome;
-        this.id = id;
+        this.texto = texto;
+        this.numero = numero;
+        this.jCheckBox1.setText(texto);
+        
     }
     
-    public int getId()
-    {
-        return this.id;
-    }
     
     public boolean isSelected()
     {
         return this.jCheckBox1.isSelected();
     }
     
-    public int getSelectedNumber()
+    public String getTexto()
     {
-        return Integer.parseInt( (String) this.jComboBox1.getSelectedItem() );
+        return this.texto;
+    }
+    
+    public int getNumero()
+    {
+        return this.numero;
     }
     
     
@@ -60,22 +63,25 @@ public class PainelCheckBoxCombo extends javax.swing.JPanel {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
-        jComboBox1 = new javax.swing.JComboBox<>();
-
-        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jCheckBox1.setText("jCheckBox1");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-
-        //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        //getContentPane().setLayout(layout);
-                //pack();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jCheckBox1)
+                .addGap(0, 91, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jCheckBox1)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }

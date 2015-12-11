@@ -49,6 +49,7 @@ public class CadastroFaltasCometidas extends javax.swing.JFrame {
             this.helper = helper;
             this.idJogo = idJogo;
             this.jogadores = new JogadorDAO(helper).getListDoJogo(idJogo);
+            System.out.println(idJogo+" isto está em cadastrofaltascomeitdas");
             
             this.cbNome.removeAllItems();
             for( Jogador j : jogadores )
@@ -223,14 +224,8 @@ public class CadastroFaltasCometidas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-     //           try 
-                {
-                    AssistenteConexao helper = new AssistenteConexao();
-//                    new CadastroFaltasTomadas( helper, new JogadorDAO(helper).getList(), 1).setVisible(true);
-                    
-  //              } catch (SQLException ex) {
-       //             Logger.getLogger(CadastroFaltasTomadas.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                AssistenteConexao helper = new AssistenteConexao();
+                new CadastroFaltasCometidas( helper, 15);
             }
         });
     }
