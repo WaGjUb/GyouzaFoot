@@ -4,6 +4,7 @@
 #como colocar os dados na tabela
 #mysql --local <nome do banco> <arquivo com o mesmo nome da tabela> 
 
+create database gyouzafoot;
 use gyouzafoot;
 
 create table jogadores(
