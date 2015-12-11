@@ -32,6 +32,28 @@ public class Estatisticas {
         this.helper = helper;
     }
     
+    public  ArrayList<String> getSuspensao() throws SQLException {
+        Connection conexao = helper.getConnection();
+        //verificar o group by
+    String sql = "select * from jogadores J where exists( select S.id_participacao from suspensao S where ( select P.id from participacao P where S.id_participacao = P.id and P.id_jogador = J.id ));";
+        
+        PreparedStatement s = conexao.prepareStatement(sql);
+        ResultSet rs = s.executeQuery();
+        
+        ArrayList<String> gols = new ArrayList();
+        
+        while (rs.next()) {
+                    gols.add(
+                            rs.getString("nome")
+                    );
+        }
+
+        helper.closeAllConnections(rs, conexao, s);
+        return gols;
+    }
+            
+            
+    
       public ArrayList<StrInt> qntdGolsFeitos() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
