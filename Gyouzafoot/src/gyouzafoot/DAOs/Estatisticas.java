@@ -55,7 +55,7 @@ public class Estatisticas {
             public ArrayList<StrInt> qntdFaltasCometidas() throws SQLException {
         Connection conexao = helper.getConnection();
         //verificar o group by
-    String sql = "select J.nome as 'Nome jogador', count(F.id) as 'Quantidade de faltas' from jogadores J inner join participacao P on J.id = P.id_jogador inner join faltas_cometidas F on F.id_participacao = p.id group by J.id order by count(F.id) desc";
+    String sql = "select J.nome as 'Nome jogador', count(F.id) as 'Quantidade de faltas' from jogadores J inner join participacao P on J.id = P.id_jogador inner join faltas_cometidas F on F.id_participacao = P.id group by J.id order by count(F.id) desc";
    
       
         PreparedStatement s = conexao.prepareStatement(sql);
