@@ -18,54 +18,26 @@
 package gyouzafoot.Janelas;
 
 import gyouzafoot.DAOs.AssistenteConexao;
-import gyouzafoot.DAOs.CartaoDAO;
-import gyouzafoot.DAOs.JogadorDAO;
-import gyouzafoot.DAOs.ParticipacaoDAO;
-import gyouzafoot.DAOs.SuspensaoDAO;
-import gyouzafoot.Objetos.Cartao;
-import gyouzafoot.Objetos.Jogador;
-import gyouzafoot.Objetos.Participacao;
-import gyouzafoot.Objetos.Suspensao;
-import gyouzafoot.Paineis.PainelCheckBoxCombo;
-import gyouzafoot.Paineis.PainelCheckBoxInt;
-import java.awt.Component;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hydrocat
  */
-public class CadastrarSuspencao extends javax.swing.JFrame {
-    ArrayList<Jogador> jogadores;
+public class JanelaPrincipal extends javax.swing.JFrame {
     AssistenteConexao helper;
-    int idJogo;
     /**
-     * Creates new form CadastrarCartaoVermelho
+     * Creates new form JanelaPrincipal
      */
-    public CadastrarSuspencao(AssistenteConexao helper, int idJogo) {
-        this.helper = helper;
-        this.idJogo = idJogo;
-                
-        try {
-            
-            
-            initComponents();
-            this.jogadores = new JogadorDAO(helper).getListDoJogo(idJogo);
-            
-            //inserindo os items no Scroll Panel
-            for ( Jogador j : jogadores )
-            {
-                this.jPanel1.add( new PainelCheckBoxCombo(j.getNome(), j.getId()) );
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastrarSuspencao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public JanelaPrincipal() {
+        initComponents();
+        this.helper = new AssistenteConexao();
         this.setVisible(true);
+        
+        
     }
 
     /**
@@ -80,29 +52,34 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(java.awt.Color.green);
 
-        jLabel1.setText("Jogador");
+        jLabel1.setFont(jLabel1.getFont().deriveFont((jLabel1.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, jLabel1.getFont().getSize()+10));
+        jLabel1.setText("GyouzaFoot");
 
-        jButton1.setText("Inserir");
+        jButton1.setText("Cadastrar Jogador");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Voltar");
+        jButton2.setText("Nova Partida");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
-        jScrollPane1.setViewportView(jPanel1);
+        jButton3.setText("Ver Estatísticas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,17 +87,12 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,51 +100,43 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //varre todos checkbox no painel, vendo quem tem está marcado.
-        //insere um de cada vez.
-
-        Participacao p;
-        try {        
-        PainelCheckBoxCombo cb;
-        for ( Component c : this.jPanel1.getComponents() )
-        {
-            cb = (PainelCheckBoxCombo) c;
-            
-            if( cb.isSelected() )
-            {
-                p = new ParticipacaoDAO(helper).buscar(
-                                cb.getId(),
-                                idJogo
-                );
-                
-                new SuspensaoDAO(helper).inserir(
-                    new Suspensao( p.getId(), cb.getSelectedNumber())
-                );
-            }
-        }
-            jButton2ActionPerformed(evt);
-            
+        try {
+            new CadastroJogador(helper);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastrarSuspencao.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar ao banco\n"+ex.getMessage());
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        this.dispose();
+        try {
+            new CadastroJogo(helper);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar ao banco\n"+ex.getMessage());
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            new ExibeEstatisticas(helper);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar ao banco\n"+ex.getMessage());
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,21 +155,20 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarSuspencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarSuspencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarSuspencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarSuspencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastrarSuspencao( new AssistenteConexao(), 12).setVisible(true);
+                new JanelaPrincipal().setVisible(true);
             }
         });
     }
@@ -213,8 +176,7 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
