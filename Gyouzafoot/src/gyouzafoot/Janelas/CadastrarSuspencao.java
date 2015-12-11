@@ -26,7 +26,7 @@ import gyouzafoot.Objetos.Cartao;
 import gyouzafoot.Objetos.Jogador;
 import gyouzafoot.Objetos.Participacao;
 import gyouzafoot.Objetos.Suspensao;
-import gyouzafoot.Paineis.PainelCheckBoxCombo;
+import gyouzafoot.Paineis.PainelCheckBoxComboMix;
 import gyouzafoot.Paineis.PainelCheckBoxInt;
 import java.awt.Component;
 import java.sql.SQLException;
@@ -59,7 +59,7 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
             //inserindo os items no Scroll Panel
             for ( Jogador j : jogadores )
             {
-                this.jPanel1.add( new PainelCheckBoxCombo(j.getNome(), j.getId()) );
+                this.jPanel1.add( new PainelCheckBoxComboMix(j.getNome(), j.getId()) );
             }
             
         } catch (SQLException ex) {
@@ -145,10 +145,10 @@ public class CadastrarSuspencao extends javax.swing.JFrame {
 
         Participacao p;
         try {        
-        PainelCheckBoxCombo cb;
+        PainelCheckBoxComboMix cb;
         for ( Component c : this.jPanel1.getComponents() )
         {
-            cb = (PainelCheckBoxCombo) c;
+            cb = (PainelCheckBoxComboMix) c;
             
             if( cb.isSelected() )
             {

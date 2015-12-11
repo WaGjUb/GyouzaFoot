@@ -32,6 +32,11 @@ public class PainelCheckBoxComboMix extends javax.swing.JPanel {
         this.texto = texto;
         this.numero = numero;
         this.jCheckBox1.setText(texto);
+        this.jComboBox1.removeAllItems();
+        for (int i = 1; i < 10; i++) {
+            this.jComboBox1.addItem(i+"");
+            
+        }
         
     }
     
@@ -51,6 +56,16 @@ public class PainelCheckBoxComboMix extends javax.swing.JPanel {
         return this.numero;
     }
     
+    public int getId()
+    {
+        return this.getNumero();
+    }
+    
+    public int getSelectedNumber()
+    {
+        return Integer.parseInt( (String) jComboBox1.getSelectedItem() );
+    }
+    
     
 
     /**
@@ -63,8 +78,11 @@ public class PainelCheckBoxComboMix extends javax.swing.JPanel {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jCheckBox1.setText("jCheckBox1");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,16 +90,20 @@ public class PainelCheckBoxComboMix extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jCheckBox1)
-                .addGap(0, 91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jCheckBox1)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jCheckBox1)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 }
