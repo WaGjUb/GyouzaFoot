@@ -129,8 +129,6 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
         jPanel3.setToolTipText("");
         jPanel3.setPreferredSize(new java.awt.Dimension(60, 60));
 
-        jlTotalJogos.setText("322");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -138,19 +136,17 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jlTotalJogos)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jlTotalJogos)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Vitorias"));
         jPanel5.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jlVitorias.setText("322");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -165,13 +161,11 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jlVitorias)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Empates"));
         jPanel7.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jlEmpates.setText("322");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -186,14 +180,12 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jlEmpates)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Derrotas"));
         jPanel8.setToolTipText("");
         jPanel8.setPreferredSize(new java.awt.Dimension(60, 60));
-
-        jlDerrotas.setText("322");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -208,7 +200,7 @@ public class ExibeEstatisticas extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jlDerrotas)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
 
         jButton1.setText("Fechar");
